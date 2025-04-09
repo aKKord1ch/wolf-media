@@ -1,0 +1,40 @@
+
+.header__button {
+   width: clamp(168px, 8.75vw, 200px);
+   height: 40px;
+ 
+   background-color: transparent;
+   border: 2px solid var(--white);
+ 
+   margin-left: 2.083vw;
+ 
+   @media (max-width: 1024px) {
+     width: fit-content;
+   }
+   @media (max-width: 425px) {
+     display: none;
+   }
+ }
+ 
+ .header__button img {
+   display: none;
+   margin: 0px 15px;
+ 
+   @media (max-width: 1024px) {
+     display: block;
+   }
+ }
+ 
+ .header__button span {
+   font-family: "My Font Regular", sans-serif;
+   font-size: 0.825rem;
+   line-height: 170%;
+   letter-spacing: 0%;
+   text-align: center;
+   vertical-align: middle;
+   text-transform: uppercase;
+ 
+   @media (max-width: 1024px) {
+     display: none;
+   }
+ }

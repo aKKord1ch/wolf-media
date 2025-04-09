@@ -1,0 +1,35 @@
+.phone__link {
+  @media (max-width: 800px) {
+    display: none;
+  }
+  @media (max-width: 425px) {
+    display: block;
+  }
+}
+
+.phone__caption {
+  white-space: nowrap;
+
+  @media (max-width: 425px) {
+    display: none;
+  }
+}
+
+.phone__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  gap: 1.042vw;
+
+  margin-left: 2.6vw;
+}
+
+.phone__caption span {
+   font-family: "My Font Regular", sans-serif;
+   font-size: 1.125rem;
+   line-height: 170%;
+   letter-spacing: 0%;
+   text-align: right;
+   text-transform: uppercase;
+ }
