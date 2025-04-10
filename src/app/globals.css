@@ -1,16 +1,19 @@
 :root {
-  --background: rgba(47, 22, 52, 1);
+  --background: rgb(47, 22, 52);
   --foreground: #171717;
 
   --white: #fff;
-  --color2: rgba(146, 115, 152, 1);
-  --color3: rgba(106, 78, 112, 1);
-  --color4: rgba(80, 54, 85, 1);
-  --color5: rgba(59, 35, 65, 1);
+  --color2: rgb(146, 115, 152);
+  --color3: rgb(106, 78, 112);
+  --color4: rgb(80, 54, 85);
+  --color5: rgb(59, 35, 65);
 
-  --accent-color: rgba(242, 92, 58, 1);
-  --accent-color2: rgba(255, 133, 45, 1);
-  --accent-color3: rgba(227, 67, 45, 1);
+  --accent-color: rgb(242, 92, 58);
+  --accent-color2: rgb(255, 133, 45);
+  --accent-color3: rgb(227, 67, 45);
+
+  --main-font-regular: "Main Font Regular", sans-serif;
+  --main-font-titles: "Main Font Titles";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -84,7 +87,7 @@ li {
 }
 
 .wrapper::after {
-  content: '';
+  content: "";
 
   min-height: 100vh;
   width: 100%;
@@ -102,3 +105,7 @@ li {
   z-index: 1;
 }
 
+main {
+  position: relative;
+  z-index: 102;
+}
