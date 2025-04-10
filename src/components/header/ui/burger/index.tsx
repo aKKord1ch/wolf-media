@@ -1,16 +1,28 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import css from "./index.module.css";
 import header_css from "../../index.module.css";
 import { HEADER_MENU } from "@/common/constants";
-import { LinkItem } from "../link-item";
-import ButtonItem from "../button-item";
+import { LinkItem } from "../../../shared/link-item";
+import { ButtonItem } from "../../../shared/button-item";
 import clsx from "clsx";
 
 export default function Burger() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    const header = document.querySelector("header");
+    if (!header) return
+
+    header.style.backgroundColor = isOpen ? 'var(--background)': 'transparent'
+
+    return () => {
+      header.style.backgroundColor = 'transparent'
+    }
+  }, [isOpen]);
 
   return (
     <div className={css.burger__container}>
@@ -30,7 +42,10 @@ export default function Burger() {
         </svg>
       </button>
 
-      <dialog className={clsx(css.mobile_nav, isOpen && css.visible)} id="mob-nav">
+      <dialog
+        className={clsx(css.mobile_nav, isOpen && css.visible)}
+        id="mob-nav"
+      >
         <nav className={css.mob__navigation}>
           <ul className={css.mob__nav__list}>
             {HEADER_MENU.map((item) => (
@@ -42,13 +57,13 @@ export default function Burger() {
         </nav>
 
         <section className={css.nav_feedback}>
-          <LinkItem tel="+7 495 257 55 65" className={css.link}/>
+          <LinkItem tel="+7 495 257 55 65" className={css.link} />
 
           <ButtonItem className={css.mobile_button} />
         </section>
       </dialog>
 
-      <section className={css.burger__backdrop}></section>
+      <section className={clsx(css.burger__backdrop, {[css.active]: isOpen})}></section>
     </div>
   );
 }

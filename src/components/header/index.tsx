@@ -2,16 +2,15 @@ import { HEADER_MENU, HEADER_SOCIALS } from "@/common/constants";
 import Logo from "./ui/logo";
 import Burger from "./ui/burger";
 import css from "./index.module.css";
-import { LinkItem } from "./ui/link-item";
-import ButtonItem from "./ui/button-item";
+import { LinkItem } from "../shared/link-item";
+import { ButtonItem } from "../shared/button-item";
 
 export default function HeaderDefault() {
   return (
     <header className={css.header}>
       <ul className={css.list_items}>
-
-        <li className={css.header__item}>
-            <Burger />
+        <li className={css.header__item + " " + css.hidden}>
+          <Burger />
         </li>
 
         <li className={css.header__item}>

@@ -16,8 +16,8 @@ export const LinkItem = ({ tel, className }: LinkItemProps) => {
         <picture>
           <img src="/header/phone-call.svg" alt="phone-call" />
         </picture>
-        <figcaption className={cx(css.phone__caption, className)}>
-          <span>{tel}</span>
+        <figcaption className={cx(css.phone__caption)}>
+          <span className={cx(className)}>{tel}</span>
         </figcaption>
       </figure>
     </Link>

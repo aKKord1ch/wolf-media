@@ -1,0 +1,41 @@
+.footer {
+  width: 100%;
+  background-color: var(--color5);
+
+  padding: 30px 0;
+
+  position: relative;
+  z-index: 2;
+}
+
+.container {
+   display: flex;
+   flex-direction: row;
+
+   justify-content: space-between;
+   align-items: center;
+}
+
+.span {
+  font-family: 'Main Font Regular', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+
+  color: var(--color2);
+}
+
+
+.contacts__container{
+   display: flex;
+   flex-direction: row;
+
+   gap: 2.604vw;
+}
+
+.link {
+   margin-left: unset;
+}

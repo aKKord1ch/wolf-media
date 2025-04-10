@@ -130,7 +130,7 @@
 }
 
 .burger__backdrop {
-  display: none;
+  opacity: 0;
   width: 100vw;
   height: 100vh;
 
@@ -138,10 +138,12 @@
 
   position: absolute;
   left: 0;
+
+  transition: opacity 0.5s ease;
 }
 
 .burger__backdrop.active {
-  display: block;
+  opacity: 1;
 }
 
 .menu_icon {
@@ -190,8 +192,15 @@
   transform: translateY(0) rotate(-45deg);
 }
 
-.mobile_button {
-  @media (max-width: 767px) {
+button.mobile_button {
+  display: block;
+
+  width: clamp(158px, 100%, 168px);
+
+  img {
+    display: none;
+  }
+  span {
     display: block;
   }
 }
@@ -205,5 +214,9 @@
 .link {
   figcaption {
     display: block;
+  }
+
+  figcaption span {
+    font-size: clamp(15px, 100%, 16px);
   }
 }

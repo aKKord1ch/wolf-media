@@ -1,18 +1,16 @@
 import css from './index.module.css';
-import clsx from 'clsx';
+import cx from 'clsx';
 import { FC } from 'react';
 
-interface ButtonItemProps {
+export interface ButtonItemProps {
   className?: string;
 }
 
-const ButtonItem: FC<ButtonItemProps> = ({ className }) => {
+export const ButtonItem = ({ className }: ButtonItemProps) => {
   return (
-    <button className={clsx(css.header__button, className)}>
+    <button className={cx(css.header__button, className)}>
       <span>написать нам</span>
       <img src="/header/mail.svg" alt="Письмо" />
     </button>
   );
 };
-
-export default ButtonItem
