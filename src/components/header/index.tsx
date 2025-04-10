@@ -15,7 +15,7 @@ export default function HeaderDefault() {
 
         <li className={css.header__item}>
           <div className={css.item__image}>
-            <Logo />
+            <Logo def="/header/WolfMEdia.svg" tablet="/header/logo600.svg" mobile="/header/WolfMEdia.svg"/>
           </div>
 
           <nav className={css.navigation}>
@@ -43,6 +43,7 @@ export default function HeaderDefault() {
           <ButtonItem />
         </li>
       </ul>
+
     </header>
   );
 }

@@ -1,14 +1,24 @@
-import { getDeviceType } from "@/common/helpers";
+'use client'
 
-export default async function Logo() {
-  let logo: string = "header/WolfMEdia.svg";
+import { useMediaQuery } from '@mui/material';
+import {JSX} from 'react'
 
-  if (await getDeviceType() === "desktop") {
-    logo = "header/WolfMEdia.svg";
-  } else if (await getDeviceType() === "tablet") {
-    logo = "header/logo600.svg";
-  } else {
-    logo = "header/WolfMEdia.svg";
+export interface LogoProps {
+  def: string;
+  tablet: string;
+  mobile: string;
+}
+
+export default function Logo({def, tablet, mobile}: LogoProps) {
+  let logo: string = def;
+  let isMobile = useMediaQuery('(width <=600px)')
+  let isTablet = useMediaQuery('(width <=900px)')
+
+  try {
+    if (isMobile) logo = mobile
+    else if (isTablet) logo = tablet
+  } catch (error) {
+    console.error("Error detecting device type:", error);
   }
 
   return <img src={logo} alt="logo" title="logo" />;

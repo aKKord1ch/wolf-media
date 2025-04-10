@@ -6,15 +6,16 @@ import cx from "clsx";
 export interface LinkItemProps {
   tel?: string;
   className?:string;
-  isPage?: boolean
+  isPage?: boolean;
+  src?: string;
 }
 
-export const LinkItem = ({ tel, className }: LinkItemProps) => {
+export const LinkItem = ({ tel, className, src = '/header/phone-call.svg' }: LinkItemProps) => {
   return (
-    <Link href="tel:+7 495 257 55 65" className={cx(css.phone__link)}>
+    <Link href="tel:+7 495 257 55 65" className={cx(css.phone__link, className)}>
       <figure className={cx(css.phone__container, className)}>
         <picture>
-          <img src="/header/phone-call.svg" alt="phone-call" />
+          <img src={src} alt="phone-call" />
         </picture>
         <figcaption className={cx(css.phone__caption)}>
           <span className={cx(className)}>{tel}</span>

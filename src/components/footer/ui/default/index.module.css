@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.span {
+  font-family: "Main Font Regular", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+
+  color: var(--color2);
+
+  @media (width <= 900px) {
+    display: none;
+  }
+}
+
+.contacts__container {
+  display: flex;
+  flex-direction: row;
+
+  gap: 50px;
+}
+
+.link {
+  margin-left: unset;
+
+  @media (width <= 800px) {
+    display: flex;
+  }
+
+  figcaption {
+    color: var(--color2);
+  }
+}
+
+.socials__list {
+   @media (max-width: 1280px) {
+     display: flex;
+   }
+ }
+ 
