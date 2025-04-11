@@ -11,7 +11,7 @@
   padding: 20px 30px;
 
   position: relative;
-  z-index: 2;
+  z-index: 103;
 
   @media (max-width: 1220px) {
     padding: 13px 20px;

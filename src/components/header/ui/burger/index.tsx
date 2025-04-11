@@ -15,13 +15,19 @@ export default function Burger() {
 
   useEffect(() => {
     const header = document.querySelector("header");
-    if (!header) return
+    if (!header) return;
 
-    header.style.backgroundColor = isOpen ? 'var(--background)': 'transparent'
+    header.style.backgroundColor = isOpen ? "var(--background)" : "transparent";
+
+    const html = document.documentElement;
+    if (!html) return;
+
+    html.style.overflow = isOpen ? "hidden" : "auto";
 
     return () => {
-      header.style.backgroundColor = 'transparent'
-    }
+      header.style.backgroundColor = "transparent";
+      html.style.overflow = "auto";
+    };
   }, [isOpen]);
 
   return (
@@ -63,7 +69,9 @@ export default function Burger() {
         </section>
       </dialog>
 
-      <section className={clsx(css.burger__backdrop, {[css.active]: isOpen})}></section>
+      <section
+        className={clsx(css.burger__backdrop, { [css.active]: isOpen })}
+      ></section>
     </div>
   );
 }

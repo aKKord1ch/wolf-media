@@ -3,3 +3,14 @@
   margin: 0 auto;
   padding: 0 15px;
 }
+
+.main_title {
+  font-family: var(--main-font-titles);
+  font-weight: 900;
+  font-size: clamp(32px, 5vw + 1rem, 50px);
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+
+  display: block;
+}
