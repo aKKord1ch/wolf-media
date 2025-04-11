@@ -1,9 +1,9 @@
-import { HEADER_MENU, HEADER_SOCIALS } from "@/common/constants";
 import Logo from "./ui/logo";
 import Burger from "./ui/burger";
 import css from "./index.module.css";
 import { LinkItem } from "../shared/link-item";
 import { ButtonItem } from "../shared/button-item";
+import { HEADER_MENU, HEADER_SOCIALS } from "@/model/header";
 
 export default function HeaderDefault() {
   return (

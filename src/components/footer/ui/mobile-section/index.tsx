@@ -1,4 +1,3 @@
-import { HEADER_SOCIALS } from "@/common/constants";
 
 import global from "@/app/globals.module.css";
 import header from "@/components/header/index.module.css";
@@ -6,6 +5,7 @@ import css from "./index.module.css";
 import clsx from "clsx";
 import Logo from "@/components/header/ui/logo";
 import { LinkItem } from "@/components/shared/link-item";
+import { HEADER_SOCIALS } from "@/model/header";
 
 export default function FooterMobile() {
   return (

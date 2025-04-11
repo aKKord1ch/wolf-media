@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import css from "./index.module.css";
 import header_css from "../../index.module.css";
-import { HEADER_MENU } from "@/common/constants";
 import { LinkItem } from "../../../shared/link-item";
 import { ButtonItem } from "../../../shared/button-item";
 import clsx from "clsx";
+import { HEADER_MENU } from "@/model/header";
 
 export default function Burger() {
   const [isOpen, setIsOpen] = useState(false);

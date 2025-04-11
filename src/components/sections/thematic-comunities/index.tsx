@@ -1,8 +1,8 @@
-import { SECTION_3 } from "@/common/constants";
 import css from "./index.module.css";
 import global from "@/app/globals.module.css";
 import clsx from "clsx";
 import InnerComunities from "./inner-comunities";
+import { THEMATIC_COMUNITY__CARDS } from "@/model/thematic_comunity";
 
 export default function Section3() {
   return (
@@ -12,7 +12,7 @@ export default function Section3() {
       </span>
 
       <ul className={css.list}>
-        {SECTION_3.map((item) => (
+        {THEMATIC_COMUNITY__CARDS.map((item) => (
           <li className={css.list_item} key={item.id}>
             <img src={item.src} alt={item.metaAlt} title={item.metaTitle} />
             <span>{item.title}</span>
