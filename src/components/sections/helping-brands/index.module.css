@@ -36,6 +36,8 @@
     grid-template-columns: unset;
     grid-template-rows: repeat(3, 1fr);
 
+    gap: 15px;
+
     margin-top: 20px;
   }
 }
@@ -104,7 +106,7 @@
   @media (width <= 600px) {
     height: 100px;
   }
-  @media (width <= 4250px) {
+  @media (width <= 425px) {
     width: unset;
     height: unset;
     padding: 15px;
@@ -139,6 +141,10 @@
   justify-content: center;
 
   background-color: var(--accent-color);
+
+  @media (width <= 425px) {
+    width: 100%;
+  }
 
   span {
     font-family: var(--main-font-regular);

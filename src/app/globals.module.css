@@ -7,7 +7,11 @@
 .main_title {
   font-family: var(--main-font-titles);
   font-weight: 900;
-  font-size: clamp(32px, 5vw + 1rem, 50px);
+  font-size: clamp(
+    24px,
+    calc(24px + (50 - 24) * ((100vw - 600px) / (1920 - 600))),
+    50px
+  );
   line-height: 100%;
   letter-spacing: 0%;
   text-transform: uppercase;
