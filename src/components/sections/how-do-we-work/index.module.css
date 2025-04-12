@@ -11,18 +11,22 @@
   display: flex;
   flex-direction: row;
 
-  align-items: center;
   justify-content: space-between;
 
   gap: 30px;
 
-  @media (width <= 900px) {
+  @media (width <= 1080px) {
     flex-direction: column;
   }
 }
 
 .main_item {
-  width: fit-content;
+  max-width: 770px;
+
+  @media (width <= 1080px) {
+    width: 100%;
+    max-width: unset;
+  }
 }
 
 .list_inner {
@@ -31,7 +35,7 @@
   display: flex;
   flex-direction: column;
 
-  gap: 1.30vw;
+  gap: 1vw;
 
   @media (width <= 900px) {
     width: 100%;
@@ -43,7 +47,7 @@
 }
 
 .inner_item {
-  padding: 15px 25px 25px;
+  padding: 15px 25px 20px 25px;
 
   border: 2px solid var(--color4);
 
@@ -55,9 +59,8 @@
   text-align: center;
 
   @media (width <= 900px) {
-   display: flex;
-   align-items: center;
-
+    display: flex;
+    align-items: center;
   }
 
   span {
