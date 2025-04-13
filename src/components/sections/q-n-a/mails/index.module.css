@@ -1,6 +1,14 @@
 .list {
-   display: flex;
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-   gap: 40px;
+  gap: 40px;
+
+  width: 33.33%;
+
+  @media (width <= 1000px) {
+   width: 100%;
+   flex-direction: row;
+   flex-wrap: wrap-reverse;
+  }
 }

@@ -11,8 +11,8 @@ export interface LogoProps {
 
 export default function Logo({def, tablet, mobile}: LogoProps) {
   let logo: string = def;
-  let isMobile = useMediaQuery('(width <=600px)')
-  let isTablet = useMediaQuery('(width <=900px)')
+  let isMobile = useMediaQuery('(width <=425px)')
+  let isTablet = useMediaQuery('(width <=600px)')
 
   try {
     if (isMobile) logo = mobile

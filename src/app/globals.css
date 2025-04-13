@@ -112,6 +112,6 @@ main {
   padding-bottom: 120px;
 
   @media (width <= 900) {
-    padding: 80px;
+    padding-bottom: 80px;
   }
 }

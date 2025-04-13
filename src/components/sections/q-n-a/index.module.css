@@ -22,10 +22,14 @@
 }
 
 .main {
-  display: grid;
-  grid-template-columns: 0.7fr 0.3fr;
-
-  gap: 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 2.5%;
 
   margin-top: 40px;
+
+  @media (width <= 1000px) {
+   gap: 40px;
+   flex-direction: column-reverse;
+  }
 }
