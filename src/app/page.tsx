@@ -4,6 +4,7 @@ import Section3 from "@/components/sections/thematic-comunities";
 import Section4 from "@/components/sections/how-do-we-work";
 import HelpingBrands from "@/components/sections/helping-brands";
 import WorkAuto from "@/components/sections/work-auto";
+import QandA from "@/components/sections/q-n-a";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
     <Section4 />
     <HelpingBrands />
     <WorkAuto />
+    <QandA />
    </main>
   );
 }

@@ -1,0 +1,48 @@
+.mail_item__container {
+  display: flex;
+  flex-direction: row;
+
+  gap: 0.781vw;
+
+  img {
+    width: 16px;
+    height: 16px;
+
+    margin-top: 4px;
+  }
+
+  figcaption {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.email {
+  font-family: var(--main-font-regular);
+  font-weight: 400;
+  font-size: clamp(
+    13px,
+    calc(13px + (16 - 13) * ((100vw - 600px) / (1920 - 600))),
+    16px
+  );
+  line-height: 130%;
+  letter-spacing: 0%;
+
+  text-decoration: dotted;
+}
+
+.under_title {
+  font-family: var(--main-font-regular);
+  font-weight: 400;
+  font-size: clamp(
+    11px,
+    calc(11px + (14 - 11) * ((100vw - 600px) / (1920 - 600))),
+    14px
+  );
+  line-height: 130%;
+  letter-spacing: 0%;
+
+  color: var(--color2);
+
+  margin-top: 15px;
+}

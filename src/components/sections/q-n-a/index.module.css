@@ -1,0 +1,31 @@
+.section {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 120px;
+}
+
+.sub_title {
+  font-family: var(--main-font-regular);
+  font-weight: 700;
+  font-size: clamp(
+    14px,
+    calc(14px + (22 - 14) * ((100vw - 600px) / (1920 - 600))),
+    22px
+  );
+  line-height: 110%;
+  letter-spacing: 0%;
+
+  color: var(--white);
+
+  margin-top: 1.563vw;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 0.7fr 0.3fr;
+
+  gap: 30px;
+
+  margin-top: 40px;
+}
