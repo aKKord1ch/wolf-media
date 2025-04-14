@@ -38,11 +38,12 @@
 }
 
 .event {
-  background-color: var(--color5);
+  background-color: var(--color4);
 
   font-family: var(--main-font-regular);
   font-weight: 400;
-  font-size: clamp(12px, 5vw + 1rem, 16px);
+  font-size: 16px;
+
   line-height: 130%;
   letter-spacing: 0%;
   vertical-align: middle;
@@ -56,6 +57,10 @@
 
   position: relative;
 
+  @media (width <= 425px) {
+    @mixin responsive-font-size 12 16;
+  }
+
   &::after {
     content: "";
 
@@ -64,7 +69,7 @@
     width: 10px;
     height: 10px;
 
-    background-color: var(--color5);
+    background-color: var(--color4);
 
     position: absolute;
     left: 0;

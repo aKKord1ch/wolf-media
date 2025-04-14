@@ -4,23 +4,39 @@
   display: flex;
   flex-direction: column;
 
-  gap: 1.823vw;
+  gap: 50px;
+
+  @media (width <= 900px) {
+    padding-top: 80px;
+    gap: 65px;
+  }
+  @media (width <= 600px) {
+    gap: 30px;
+  }
+  @media (width <= 425px) {
+    gap: unset;
+  }
 }
 
 .list {
   display: flex;
   flex-direction: row;
 
-  justify-content: space-between;
+  gap: 35px;
 
-  @media (width <=600) {
+  @media (width <=600px) {
     flex-direction: column;
     gap: 30px;
+  }
+
+  @media (width <= 425px) {
+    margin-top: 30px;
+    gap: 50px;
   }
 }
 
 .item {
-  width: 48%;
+  width: 50%;
 
   @media (width <=600) {
     width: 100%;
@@ -31,9 +47,14 @@
 
     font-family: var(--main-font-regular);
     font-weight: 400;
-    font-size: clamp(13px, 5vw + 1rem, 16px);
+    font-size: 16px;
+
     line-height: 130%;
     letter-spacing: 0%;
+
+    @media (width <= 425px) {
+      @mixin responsive-font-size 13 16;
+    }
   }
 }
 
@@ -43,8 +64,10 @@
 
   align-items: center;
 
-  gap: 2vw;
+  gap: 20px;
   overflow: hidden;
+
+  @media (width <= 425px) {
+    gap: 15px;
+  }
 }
-
-

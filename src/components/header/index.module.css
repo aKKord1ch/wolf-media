@@ -115,7 +115,7 @@
 
 .nav__item span {
   font-family: "My Font Regular", sans-serif;
-  font-size: clamp(14px, 1vw, 16px);
+  font-size: clamp(12px, 1vw, 16px);
   line-height: 100%;
   letter-spacing: 0%;
   text-transform: uppercase;
@@ -185,7 +185,7 @@
 
     opacity: 0;
 
-    background-color: var(--accent-color);
+    background-color: var(--white);
 
     transition: opacity 0.2s ease-in-out;
   }
