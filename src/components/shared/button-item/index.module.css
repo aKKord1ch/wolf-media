@@ -2,10 +2,15 @@
   width: clamp(168px, 8.75vw, 200px);
   height: 40px;
 
-  background-color: transparent;
+  background-color: unset;
   border: 2px solid var(--white);
 
   margin-left: 2.083vw;
+
+  transition: background 0.3s ease-in;
+
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 1024px) {
     width: fit-content;
@@ -13,11 +18,44 @@
   @media (max-width: 425px) {
     display: none;
   }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 1;
+
+    width: 100%;
+    height: 70%;
+
+    display: block;
+
+    background-color: unset;
+    transition: background-color 0.5s ease;
+
+    filter: blur(20px);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover&::after {
+    background-color: var(--accent-color);
+  }
 }
 
 .header__button img {
   display: none;
   margin: 0px 15px;
+
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 1024px) {
     display: block;
@@ -33,7 +71,12 @@
   vertical-align: middle;
   text-transform: uppercase;
 
+  position: relative;
+  z-index: 2;
+
   @media (max-width: 1024px) {
     display: none;
   }
 }
+
+

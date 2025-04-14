@@ -4,6 +4,7 @@ import css from "./index.module.css";
 import { LinkItem } from "../shared/link-item";
 import { ButtonItem } from "../shared/button-item";
 import { HEADER_MENU, HEADER_SOCIALS } from "@/model/header";
+import Link from "next/link";
 
 export default function HeaderDefault() {
   return (
@@ -15,7 +16,11 @@ export default function HeaderDefault() {
 
         <li className={css.header__item}>
           <div className={css.item__image}>
-            <Logo def="/header/WolfMEdia.svg" tablet="/header/logo600.svg" mobile="/header/WolfMEdia.svg"/>
+            <Logo
+              def="/header/WolfMEdia.svg"
+              tablet="/header/logo600.svg"
+              mobile="/header/WolfMEdia.svg"
+            />
           </div>
 
           <nav className={css.navigation}>
@@ -33,7 +38,9 @@ export default function HeaderDefault() {
           <ul className={css.socials__list}>
             {HEADER_SOCIALS.map((item) => (
               <li className={css.soc__item} key={item.id}>
-                <img src={item.src} alt={item.alt} title={item.title} />
+                <Link href={item.href} target="_blank">
+                  <img src={item.src} alt={item.alt} title={item.title} />
+                </Link>
               </li>
             ))}
           </ul>
@@ -44,6 +51,14 @@ export default function HeaderDefault() {
         </li>
       </ul>
 
+      <div className={css.gradient_blur}>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </header>
   );
 }

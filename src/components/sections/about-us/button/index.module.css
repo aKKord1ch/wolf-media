@@ -1,29 +1,31 @@
 .button {
-   width: 180px;
-   height: 40px;
+  width: 180px;
+  height: 40px;
 
-   background-color: var(--accent-color);
+  background-color: var(--accent-color);
 
-   display: flex;
-   align-items: center;
-   justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-   border: none;
+  margin-top: 40px;
 
-   margin-top: 40px;
+  @media (width <=425px) {
+    width: 100%;
+  }
 
-   @media (width <=425px) {
-      width: 100%;
-   }
+  span {
+    font-family: var(--main-font-regular);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 170%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
 
-   span {
-     font-family: var(--main-font-regular);
-     font-weight: 500;
-     font-size: 16px;
-     line-height: 170%;
-     letter-spacing: 0%;
-     text-align: center;
-     vertical-align: middle;
-     text-transform: uppercase;
-   }
- }
+    position: relative;
+    z-index: inherit;
+  }
+
+}

@@ -23,13 +23,25 @@
   gap: 1.042vw;
 
   margin-left: 2.6vw;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    transition: transform 0.6s ease;
+  }
+
+  &:hover img {
+    transform: rotate(20deg);
+  }
 }
 
 .phone__caption span {
-   font-family: "My Font Regular", sans-serif;
-   font-size: 1.125rem;
-   line-height: 170%;
-   letter-spacing: 0%;
-   text-align: right;
-   text-transform: uppercase;
- }
+  font-family: "My Font Regular", sans-serif;
+  font-size: 1.125rem;
+  line-height: 170%;
+  letter-spacing: 0%;
+  text-align: right;
+  text-transform: uppercase;
+}

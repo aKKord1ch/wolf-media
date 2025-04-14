@@ -109,9 +109,14 @@ main {
   position: relative;
   z-index: 102;
 
+  padding-top: 110px;
   padding-bottom: 120px;
 
-  @media (width <= 900) {
+  @media (width <= 900px) {
+    padding-top: 70px;
     padding-bottom: 80px;
+  }
+  @media (width <= 425px) {
+    padding-top: 50px;
   }
 }

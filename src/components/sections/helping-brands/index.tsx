@@ -32,7 +32,7 @@ export default function HelpingBrands() {
         ))}
       </ul>
 
-      <button className={css.button}>
+      <button className={clsx(css.button, global.hovered_button)}>
         <span>Рекламное сотрудничество</span>
       </button>
     </section>

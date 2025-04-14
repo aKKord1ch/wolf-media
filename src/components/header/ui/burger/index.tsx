@@ -24,9 +24,15 @@ export default function Burger() {
 
     html.style.overflow = isOpen ? "hidden" : "auto";
 
+    const grad = document.querySelector("gradient_blur") as HTMLElement;
+    if (!grad) return;
+
+    grad.style.visibility = isOpen ? "hidden" : "visible";
+
     return () => {
       header.style.backgroundColor = "transparent";
       html.style.overflow = "auto";
+      grad.style.visibility = "visible";
     };
   }, [isOpen]);
 
@@ -37,15 +43,11 @@ export default function Burger() {
         onClick={toggleMenu}
         aria-label="Toggle menu"
       >
-        <svg
-          className={css.menu_icon}
-          viewBox="0 0 40 40"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <line className={css.top_line} x1="8" y1="12" x2="32" y2="12" />
-          <line className={css.middle_line} x1="8" y1="20" x2="32" y2="20" />
-          <line className={css.bottom_line} x1="8" y1="28" x2="32" y2="28" />
-        </svg>
+        <div className={clsx(css.menu_icon, isOpen && css.active)}>
+          <span className={clsx(css.top_line, isOpen && css.active)} />
+          <span className={clsx(css.middle_line, isOpen && css.active)} />
+          <span className={clsx(css.bottom_line, isOpen && css.active)} />
+        </div>
       </button>
 
       <dialog
@@ -70,6 +72,7 @@ export default function Burger() {
       </dialog>
 
       <section
+        onClick={toggleMenu}
         className={clsx(css.burger__backdrop, { [css.active]: isOpen })}
       ></section>
     </div>

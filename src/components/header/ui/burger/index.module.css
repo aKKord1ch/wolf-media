@@ -35,7 +35,7 @@
 
   padding: 30px 15px 37px;
 
-  transform: translateX(-20px);
+  transform: translateX(-100px);
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
@@ -49,7 +49,7 @@
 }
 
 .mobile_nav.visible {
-  transform: translateY(0);
+  transform: translateX(-20px);
   opacity: 1;
   visibility: visible;
 }
@@ -130,7 +130,9 @@
 }
 
 .burger__backdrop {
+  visibility: hidden;
   opacity: 0;
+
   width: 100vw;
   height: 100vh;
 
@@ -139,57 +141,67 @@
   position: absolute;
   left: 0;
 
-  transition: opacity 0.5s ease;
+  transition: visibility 0.5s ease, opacity 0.5s ease;
 }
 
 .burger__backdrop.active {
   opacity: 1;
+  visibility: visible;
 }
 
 .menu_icon {
-  width: 100%;
-  height: 100%;
+  width: 30px;
+  height: 30px;
   position: relative; /* Для абсолютного позиционирования линий в active состоянии */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  transform: rotate(0);
+  transition: transform 0.3s ease-in-out;
 }
 
-.menu_icon line {
-  stroke: #fff;
-  stroke-width: 4;
-  stroke-linecap: round;
+.menu_icon.active {
+  transform: rotate(45deg);
+}
+
+.menu_icon span {
+  background-color: #fff;
   transition: all 0.3s ease;
-  transform-origin: left center; /* Поворот от левого края */
+
+  display: block;
+
+  width: 100%;
+  height: 2px;
 }
 
 .burger .top_line {
-  transform: translateY(0px);
+  transform: rotate(0) translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.top_line.active {
+  transform: rotate(90deg) translateX(10.2px);
 }
 
 .burger .middle_line {
-  transform: translateY(0);
+  opacity: 1;
+
+  transition: opacity 1s ease;
 }
 
-.burger .bottom_line {
-  transform: translateY(0px);
-}
-
-@keyframes topLine {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-50%);
-  }
-  100% {
-    transform: rotate(45deg);
-  }
-}
-
-.burger.active .middle_line {
+.middle_line.active {
   opacity: 0;
 }
 
-.burger.active .bottom_line {
-  transform: translateY(0) rotate(-45deg);
+.burger .bottom_line {
+  top: unset;
+  transition: transform 0.3s ease;
+}
+
+.bottom_line.active {
+  transform: translateY(-10.2px);
 }
 
 button.mobile_button {

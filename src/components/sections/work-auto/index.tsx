@@ -26,7 +26,7 @@ export default function WorkAuto() {
           <img src="/sections/work-auto/video.png" alt="video" title="video" />
         </div>
         <button
-          className={clsx(innerAdminStyle.button, innerAdminStyle.hidden_mob)}
+          className={clsx(innerAdminStyle.button, global.hovered_button, innerAdminStyle.hidden_mob)}
         >
           <span>подробнее</span>
         </button>

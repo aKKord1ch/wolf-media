@@ -1,6 +1,7 @@
 import { WORK_AUTO__SERVICES } from "@/model/work_auto";
 import css from "./index.module.css";
 import clsx from "clsx";
+import global from '@/app/globals.module.css'
 
 export default function InnerAdminService() {
   return (
@@ -22,7 +23,7 @@ export default function InnerAdminService() {
         ))}
       </ul>
 
-      <button className={clsx(css.button, css.hidden_desk)}>
+      <button className={clsx(css.button, global.hovered_button, css.hidden_desk)}>
         <span>пордробнее</span>
       </button>
     </div>
