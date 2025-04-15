@@ -26,9 +26,11 @@ export default function HeaderDefault() {
           <nav className={css.navigation}>
             <ul className={css.nav__list}>
               {HEADER_MENU.map((item) => (
-                <li className={css.nav__item} key={item.id}>
-                  <span>{item.title}</span>
-                </li>
+                <Link href={item.href}>
+                  <li className={css.nav__item} key={item.id}>
+                    <span>{item.title}</span>
+                  </li>
+                </Link>
               ))}
             </ul>
           </nav>

@@ -1,8 +1,8 @@
 export const HEADER_MENU = [
-   { id: 0, title: "о нас" },
-   { id: 1, title: "Портфолио" },
-   { id: 2, title: "Услуги" },
-   { id: 3, title: "Контакты" },
+   { id: 0, title: "о нас", href: '/cases' },
+   { id: 1, title: "Портфолио", href: '/cases' },
+   { id: 2, title: "Услуги", href: '/cases' },
+   { id: 3, title: "Контакты", href: '/cases' },
  ];
  
  export const HEADER_SOCIALS = [
