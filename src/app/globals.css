@@ -90,7 +90,7 @@ li {
 .wrapper::after {
   content: "";
 
-  min-height: 100vh;
+  min-height: 70vw;
   width: 100%;
 
   display: block;
@@ -105,8 +105,11 @@ li {
   left: 0;
   z-index: 1;
 
+  @media (width <= 1400px) {
+    min-height: 100vw;
+  }
   @media (width <= 900px) {
-    min-height: 160vh;
+    min-height: 120vw;
   }
 }
 
