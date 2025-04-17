@@ -1,0 +1,8 @@
+.main {
+  min-height: 90vh;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+}

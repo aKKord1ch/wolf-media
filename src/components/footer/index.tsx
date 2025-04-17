@@ -10,11 +10,15 @@ import FooterMobile from "./ui/mobile-section";
 import FooterDefault from "./ui/default";
 import { useMediaQuery } from "@mui/material";
 
-export default function Footer () {
+interface FooterProps {
+  className?: string
+}
+
+export default function Footer ({className}: FooterProps) {
   const isMobile = useMediaQuery('(width <= 425px)')
 
   return (
-    <footer className={css.footer}>
+    <footer className={clsx(css.footer, className)}>
       {(!isMobile) && <FooterDefault />}
 
       {!isMobile && (

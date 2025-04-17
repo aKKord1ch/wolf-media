@@ -1,6 +1,8 @@
 import { headers } from "next/headers"
 
-export const getDeviceType = async():Promise<string> => {
+export type DeviceType = 'mobile' | 'tablet' | 'desktop';
+
+export const getDeviceType = async():Promise<DeviceType> => {
    let userAgent = (await headers()).get("user-agent") || ""
 
    if (/Mobi|Android/i.test(userAgent)) return "mobile"

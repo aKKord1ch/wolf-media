@@ -1,3 +1,5 @@
+"use client";
+
 import Logo from "./ui/logo";
 import Burger from "./ui/burger";
 import css from "./index.module.css";
@@ -5,32 +7,49 @@ import { LinkItem } from "../shared/link-item";
 import { ButtonItem } from "../shared/button-item";
 import { HEADER_MENU, HEADER_SOCIALS } from "@/model/header";
 import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
+import { transliterate } from "transliteration";
 
 export default function HeaderDefault() {
+  const [curPage, setCurPage] = useState("/");
+
+  const setPage = (pg: string) => {
+    setCurPage(pg);
+  };
+
   return (
     <header className={css.header}>
       <ul className={css.list_items}>
         <li className={css.header__item + " " + css.hidden}>
-          <Burger />
+          <Burger page={curPage} setPage={setPage} />
         </li>
 
         <li className={css.header__item}>
           <div className={css.item__image}>
-            <Logo
-              def="/header/WolfMEdia.svg"
-              tablet="/header/logo600.svg"
-              mobile="/header/WolfMEdia.svg"
-            />
+            <Link href={'/'} className={css.link}>
+              <Logo
+                def="/header/WolfMEdia.svg"
+                tablet="/header/logo600.svg"
+                mobile="/header/WolfMEdia.svg"
+              />
+            </Link>
           </div>
 
           <nav className={css.navigation}>
             <ul className={css.nav__list}>
               {HEADER_MENU.map((item) => (
-                <Link href={item.href}>
-                  <li className={css.nav__item} key={item.id}>
-                    <span>{item.title}</span>
-                  </li>
-                </Link>
+                <li
+                  onClick={() => setCurPage(transliterate(item.title))}
+                  className={clsx(css.nav__item, {
+                    [css.active_nav]: curPage === transliterate(item.title),
+                  })}
+                  key={item.id}
+                >
+                  <span>{item.title}</span>
+                </li>
               ))}
             </ul>
           </nav>
@@ -41,7 +60,13 @@ export default function HeaderDefault() {
             {HEADER_SOCIALS.map((item) => (
               <li className={css.soc__item} key={item.id}>
                 <Link href={item.href} target="_blank">
-                  <img src={item.src} alt={item.alt} title={item.title} />
+                  <Image
+                    width={24}
+                    height={24}
+                    src={item.src}
+                    alt={item.alt}
+                    title={item.title}
+                  />
                 </Link>
               </li>
             ))}

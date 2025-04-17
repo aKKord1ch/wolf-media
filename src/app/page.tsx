@@ -6,22 +6,29 @@ import HelpingBrands from "@/components/sections/helping-brands";
 import WorkAuto from "@/components/sections/work-auto";
 import QandA from "@/components/sections/q-n-a";
 
-import css from './globals.module.css'
+import css from "./globals.module.css";
+import HeaderDefault from "@/components/header";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
-    <main>
-      <Section1 />
-      <Section2 />
-      <Section3 />
-      <Section4 />
-      <HelpingBrands />
-      <WorkAuto />
-      <QandA />
+    <div className="wrapper">
+      <HeaderDefault />
+      <main>
+        <Section1 />
+        <Section2 />
+        <Section3 />
+        <Section4 />
+        <HelpingBrands />
+        <WorkAuto />
+        <QandA />
 
-      <a href="#" className={css.scroll_to_top}>
-        ↑
-      </a>
-    </main>
+        <a href="#" className={css.scroll_to_top}>
+          ↑
+        </a>
+      </main>
+
+      <Footer />
+    </div>
   );
 }

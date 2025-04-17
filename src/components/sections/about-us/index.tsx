@@ -29,7 +29,7 @@ export default function Section2() {
         <li className={css.item}>
           <div className={css.timeline}>
           {ABOUT_US__TIMELINE.map(item => (
-            <TimelineRow event={item.event} year={item.year} key={item.id}/>
+            <TimelineRow event={item.event} year={item.year} keyId={item.id} key={'ABOUT_US__TIMELINE-item' + item.id}/>
           ))}
           </div>
 

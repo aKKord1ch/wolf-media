@@ -1,5 +1,6 @@
 import { WORK_AUTO__CARD_LIST } from "@/model/work_auto";
 import css from "./index.module.css";
+import React from "react";
 
 export default function InnerCardList() {
   return (
@@ -22,7 +23,12 @@ export default function InnerCardList() {
             </div>
 
             <div className={css.text_container}>
-              <p key={item.id}>{item.title}</p>
+              <p key={item.id}>{item.title.map(item => (
+                // ненадо фрагмента
+                <React.Fragment key={"inner-card-list-" + item.id}>
+                  {item.text}
+                </React.Fragment>
+              ))}</p>
             </div>
           </li>
         ))}

@@ -20,7 +20,7 @@
 
   @media (max-width: 425px) {
     height: 50px;
-    padding: 0 15px;
+    padding: 7px 15px;
   }
 
   &::after {
@@ -59,6 +59,10 @@
   flex-direction: row;
 
   align-items: center;
+  
+  @media (max-width: 425px) {
+    height: 100%;
+  }
 }
 
 .header__item:nth-child(2) {
@@ -79,6 +83,8 @@
 .nav__item {
   position: relative;
   z-index: 2;
+
+  color: var(--color2);
 
   &::after {
     content: "";
@@ -115,7 +121,7 @@
 
 .nav__item span {
   font-family: "My Font Regular", sans-serif;
-  font-size: clamp(12px, 1vw, 16px);
+  font-size: 14px;
   line-height: 100%;
   letter-spacing: 0%;
   text-transform: uppercase;
@@ -124,10 +130,24 @@
 
   position: relative;
   z-index: 2;
+
+  @media (max-width: 500px) {
+    font-size: 12px;
+  }
 }
 
 .navigation {
-  margin-left: 3.125vw;
+  margin-left: 4.125vw;
+
+  @media (max-width: 600px) {
+    margin-left: 60px;
+  }
+  @media (max-width: 530px) {
+    margin-left: 40px;
+  }
+  @media (max-width: 470px) {
+    margin-left: 20px;
+  }
 
   @media (max-width: 425px) {
     display: none;
@@ -156,7 +176,7 @@
   position: relative;
 
   z-index: 2;
-  
+
   a {
     position: inherit;
     z-index: 4;
@@ -201,7 +221,22 @@
 
 .item__image {
   transition: transform 0.2s ease-in-out;
-
+  width: 280px;
+  height: 70px;
+  @media (max-width: 1400px) {
+    width: 14vw;
+  }
+  @media (max-width: 900px) {
+    width: 165px;
+    height: 40px;
+  }
+  @media (max-width: 600px) {
+    width: 40px;
+  }
+  @media (max-width: 425px) {
+    width: 45vw;
+    height: 100%;
+  }
   &:hover {
     cursor: pointer;
     transform: scale(1.02);
@@ -214,15 +249,37 @@
 
     gap: 13vw;
   }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
-.item__image img {
-  width: 14vw;
-  @media (max-width: 600px) {
-    width: 8vw;
+.link {
+  &:hover {
+    cursor: pointer;
   }
-  @media (max-width: 425px) {
-    width: 45vw;
+}
+
+.active_nav {
+  color: var(--white);
+  &::before {
+    content: "";
+
+    width: 100%;
+    height: 2px;
+
+    display: block;
+
+    background-color: var(--accent-color);
+
+    position: absolute;
+    bottom: -48px;
+
+    @media (width <= 900) {
+      bottom: -27px;
+    }
   }
 }
 

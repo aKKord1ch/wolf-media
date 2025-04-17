@@ -7,8 +7,14 @@ import { LinkItem } from "../../../shared/link-item";
 import { ButtonItem } from "../../../shared/button-item";
 import clsx from "clsx";
 import { HEADER_MENU } from "@/model/header";
+import { transliterate } from "transliteration";
 
-export default function Burger() {
+interface BurgerProps {
+  page: string,
+  setPage: Function
+}
+
+export default function Burger({page, setPage}:BurgerProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -57,7 +63,13 @@ export default function Burger() {
         <nav className={css.mob__navigation}>
           <ul className={css.mob__nav__list}>
             {HEADER_MENU.map((item) => (
-              <li className={css.mob__nav_item} key={item.id}>
+              <li
+                key={item.id}
+                onClick={() => setPage(transliterate(item.title))}
+                className={clsx(css.mob__nav_item, {
+                  [css.active_nav]: page === transliterate(item.title),
+                })}
+              >
                 <span>{item.title}</span>
               </li>
             ))}

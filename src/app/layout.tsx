@@ -29,11 +29,7 @@ export default function RootLayout({
     <html lang="ru">
       <head></head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <div className="wrapper">
-          <HeaderDefault />
-          {children}
-          <Footer />
-        </div>
+        {children}
         {/* <Popup /> */}
       </body>
     </html>

@@ -17,42 +17,56 @@ export const ABOUT_US__TIMELINE = [
   {
     id: 0,
     year: "2014",
-    event: ["С 1 паблика выросли до сетки из ", <strong>50 сообществ</strong>],
+    event: [
+      { id: 0, text: "С 1 паблика выросли до сетки из " },
+      { id: 1, text: <strong>50 сообществ</strong> },
+    ],
   },
   {
     id: 1,
     year: "2015",
-    event: ["Первый ", <strong>миллион</strong>, " подписчиков"],
+    event: [
+      { id: 0, text: "Первый " },
+      { id: 1, text: <strong>миллион</strong> },
+      { id: 2, text: " подписчиков" },
+    ],
   },
   {
     id: 2,
     year: "2016",
-    event: [<strong>Активный рост</strong>, "сообществ и аудитории"],
+    event: [
+      { id: 0, text: <strong>Активный рост</strong> },
+      { id: 1, text: "сообществ и аудитории" },
+    ],
   },
   {
     id: 3,
     year: "2017",
     event: [
-      "Открытие собственного ",
-      <strong>офиса</strong>,
-      " переход к",
-      <strong>реальной</strong>,
-      " команде, запуск",
-      <strong>видео-продакшена</strong>,
+      { id: 0, text: "Открытие собственного" },
+      { id: 1, text: <strong>офиса</strong> },
+      { id: 2, text: " переход к" },
+      { id: 3, text: <strong>реальной</strong> },
+      { id: 4, text: " команде, запуск" },
+      { id: 5, text: <strong>видео-продакшена</strong> },
     ],
   },
   {
     id: 4,
     year: "2018",
     event: [
-      "Разработан ",
-      <strong>собственный софт</strong>,
-      " по сбору детальной статистики",
+      { id: 0, text: "Разработан " },
+      { id: 1, text: <strong>собственный софт</strong> },
+      { id: 2, text: " по сбору детальной статистики" },
+      { id: 3, text: <strong>реальной</strong> },
     ],
   },
   {
     id: 5,
     year: "2019",
-    event: ["Агрегация сообществ под управление ", <strong>WolfMedia</strong>],
+    event: [
+      { id: 0, text: "Агрегация сообществ под управление " },
+      { id: 1, text: <strong>WolfMedia</strong> },
+    ],
   },
 ];

@@ -26,8 +26,8 @@
 .mobile_nav {
   position: absolute;
   z-index: 101;
-  top: 100%;
-  left: 0;
+  top: 115%;
+  left: 5px;
   background-color: var(--color5);
 
   width: 70vw;
@@ -86,6 +86,10 @@
   line-height: 100%;
   letter-spacing: 0%;
   text-transform: uppercase;
+
+  position: relative;
+
+  color: var(--color2);
 }
 
 .nav_feedback {
@@ -142,6 +146,7 @@
 
   position: absolute;
   left: 0;
+  top: 115%;
 
   transition: visibility 0.5s ease, opacity 0.5s ease;
 }
@@ -232,5 +237,24 @@ button.mobile_button {
 
   figcaption span {
     font-size: clamp(15px, 100%, 16px);
+  }
+}
+
+
+.active_nav {
+  color: var(--white);
+
+  &::after {
+    content: '';
+
+    display: block;
+    width: 5px;
+    height: 20px;
+
+    position: absolute;
+    left: -15px;
+    top: -3;
+
+    background-color: var(--accent-color);
   }
 }

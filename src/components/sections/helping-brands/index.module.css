@@ -1,9 +1,13 @@
 .section {
-  padding-top: 80px;
+  padding-top: 120px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (width <= 900) {
+    padding-top: 80px;
+  }
 }
 
 .sub_title {
@@ -54,11 +58,21 @@
     flex-direction: row;
   }
 
+  .padding_60 {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .padding_75 {
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+
   span {
     width: 100%;
     height: 85px;
 
-    padding: 0 15px;
+    padding: 0 75px;
 
     display: flex;
     align-items: center;

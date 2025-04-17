@@ -2,9 +2,9 @@ export const WORK_AUTO__CARD_LIST = [
   {
     id: 0,
     title: [
-      "Даёт доступ к ",
-      <span>детальной статистике</span>,
-      " как одной группы, так и всех сообществ вместе",
+      { id: 0, text: "Даёт доступ к " },
+      { id: 1, text: <span>детальной статистике</span> },
+      { id: 2, text: " как одной группы, так и всех сообществ вместе" },
     ],
     src: "/sections/work-auto/bar-chart.svg",
     metaAlt: "stonks",
@@ -12,7 +12,10 @@ export const WORK_AUTO__CARD_LIST = [
   },
   {
     id: 1,
-    title: ["Выявляет наиболее ", <span>популярные посты</span>],
+    title: [
+      { id: 0, text: "Выявляет наиболее " },
+      { id: 1, text: <span>популярные посты</span> },
+    ],
     src: "/sections/work-auto/hearts.svg",
     metaAlt: "heats",
     metaTitle: "heats",
@@ -20,9 +23,9 @@ export const WORK_AUTO__CARD_LIST = [
   {
     id: 2,
     title: [
-      "Позволяет оценивать ",
-      <span>качество контента</span>,
-      " и следить за авторами постов",
+      { id: 0, text: "Позволяет оценивать " },
+      { id: 1, text: <span>качество контента</span> },
+      { id: 2, text: " и следить за авторами постов" },
     ],
     src: "/sections/work-auto/stars-group.svg",
     metaAlt: "stars",
@@ -30,7 +33,10 @@ export const WORK_AUTO__CARD_LIST = [
   },
   {
     id: 3,
-    title: ["Сообщает об ", <span>ошибках</span>],
+    title: [
+      { id: 0, text: "Сообщает об " },
+      { id: 1, text: <span>ошибках</span> },
+    ],
     src: "/sections/work-auto/virus-bug.svg",
     metaAlt: "bags",
     metaTitle: "bags",
