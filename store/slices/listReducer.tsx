@@ -6,7 +6,7 @@ const initialState: List = {
 }
 
 const listSlice = createSlice({
-   name: 'list',
+   name: 'uuu',
    initialState,
    reducers: {
       setItem: (state, action: PayloadAction<ListItem[]> ) => {

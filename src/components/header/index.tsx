@@ -8,8 +8,7 @@ import { ButtonItem } from "../shared/button-item";
 import { HEADER_MENU, HEADER_SOCIALS } from "@/model/header";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useState } from "react";
 import clsx from "clsx";
 import { transliterate } from "transliteration";
 
@@ -29,7 +28,7 @@ export default function HeaderDefault() {
 
         <li className={css.header__item}>
           <div className={css.item__image}>
-            <Link href={'/'} className={css.link}>
+            <Link href={"/"} className={css.link}>
               <Logo
                 def="/header/WolfMEdia.svg"
                 tablet="/header/logo600.svg"
@@ -41,15 +40,17 @@ export default function HeaderDefault() {
           <nav className={css.navigation}>
             <ul className={css.nav__list}>
               {HEADER_MENU.map((item) => (
-                <li
-                  onClick={() => setCurPage(transliterate(item.title))}
-                  className={clsx(css.nav__item, {
-                    [css.active_nav]: curPage === transliterate(item.title),
-                  })}
-                  key={item.id}
-                >
-                  <span>{item.title}</span>
-                </li>
+                <Link href={item.href} key={`link-${item.id}`}>
+                  <li
+                    onClick={() => setCurPage(transliterate(item.title))}
+                    className={clsx(css.nav__item, {
+                      [css.active_nav]: curPage === transliterate(item.title),
+                    })}
+                    key={item.id}
+                  >
+                    <span>{item.title}</span>
+                  </li>
+                </Link>
               ))}
             </ul>
           </nav>

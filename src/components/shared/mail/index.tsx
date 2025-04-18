@@ -1,3 +1,4 @@
+import Image from "next/image";
 import css from "./index.module.css";
 
 interface MailItemProps {
@@ -10,11 +11,14 @@ export default function MailItem({ mail, subtitle }: MailItemProps) {
 
   return (
     <figure className={css.mail_item__container}>
-      <img src="/sections/q_n_a/arrow.svg" alt="arrow" />
+      <Image
+        width={10}
+        height={10}
+        src="/sections/q_n_a/arrow.svg"
+        alt="arrow"
+      />
       <figcaption>
-        <span className={css.email}>
-         {mail}
-        </span>
+        <span className={css.email}>{mail}</span>
         {subtitle ? sub : ""}
       </figcaption>
     </figure>

@@ -79,7 +79,6 @@
   color: var(--white);
 }
 
-/* Стили для placeholder */
 .label input::placeholder {
   color: var(--color2);
   opacity: 1;
@@ -93,7 +92,6 @@
   transform: translateY(-50%);
 }
 
-/* Анимация placeholder при фокусе */
 .label input:focus::placeholder {
   opacity: 0;
   transform: translateY(-20px);

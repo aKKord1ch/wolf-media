@@ -1,15 +1,20 @@
+"use client"
+
 import CasesList from "@/components/cases-list";
 import React from "react";
 import css from "./index.module.css";
 import HeaderDefault from "@/components/header";
 import Footer from "@/components/footer";
+import { Provider } from "react-redux";
+import store from "../../../store";
 
 const Cases = () => {
   return (
     <div className="wrapper">
-      <HeaderDefault />
       <main className={css.main}>
-        <CasesList />
+        <Provider store={store}>
+          <CasesList />
+        </Provider>
       </main>
       <Footer />
     </div>

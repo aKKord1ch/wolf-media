@@ -9,48 +9,66 @@ import Link from "next/link";
 import Pagination from "./pagination";
 import DetailItem from "../shared/cases-detail";
 import { DataResponse, Item } from "./interface/interface";
+import { useDispatch, useSelector } from "react-redux";
+import { setItem } from "../../../store/slices/listReducer";
 
 const CasesList: React.FC = () => {
-  // какашки
-  // я бы сделал все по fsd, но тогда нарушится логика всего что есть уже в этои проекте
+  const dispatch = useDispatch();
+  const data = useSelector((state: any) => state.list.items || []);
+
+  console.log('lskdmflakdmfl',data)
+
   const [length, setLength] = useState<number>(0);
   const [show, setShow] = useState<Item[]>([]);
   const [incrementalLength, setIncrementalLength] = useState<number>(0);
   const [isLoadedMore, setIsLoadedMore] = useState<boolean>(false);
 
   useEffect(() => {
+    const storeData = () => {
+      setLength(data.length);
+      setShow(data);
+      setIncrementalLength(data.length);
+    };
+
     const fetchData = async () => {
       const data: DataResponse = await getItems(10);
       setLength(data.length);
       setShow(data.items);
       setIncrementalLength(data.items.length);
+
+      dispatch(setItem(data.items))
     };
 
-    fetchData();
+    if (data.length !== 0) {
+      console.log('STORE')
+      storeData();
+    } else {
+      console.log('FETCH')
+      fetchData();
+    }
   }, []);
 
   const loadMore = async () => {
-    if (incrementalLength <= length) {
-      setIncrementalLength((prev) => prev + 10);
+    if (incrementalLength < length) {
+      const newIncrementalLength = incrementalLength + 10;
+      setIncrementalLength(newIncrementalLength);
 
-      const showArr = await getItems(10, incrementalLength);
-
+      const showArr: DataResponse = await getItems(10, incrementalLength);
       setShow((prev) => [...prev, ...showArr.items]);
       setIsLoadedMore(true);
-    } else return;
+    }
   };
 
   const loadSelectedSlice = async (id: number) => {
     let offset = id * 10 - 10;
-    const data: DataResponse = await getItems(10, offset);
-    setShow(data.items);
-    setIncrementalLength((prev) => (prev = id * 10));
+    const response: DataResponse = await getItems(10, offset);
+    setShow(response.items);
+    setIncrementalLength(id * 10);
   };
 
   const paginationCallback = (id: number) => {
     loadSelectedSlice(id);
     setIsLoadedMore(false);
-    console.log();
   };
 
   return (
@@ -58,7 +76,7 @@ const CasesList: React.FC = () => {
       <span className={css.main_title}>cases</span>
 
       <ul className={css.list}>
-        {show.map((item: any, index) => (
+        {show.map((item: Item, index) => (
           <Link
             href={`/cases/${item.slug}`}
             key={`${item.slug}-${index}`}
@@ -76,6 +94,7 @@ const CasesList: React.FC = () => {
         length={length}
         isLoadedMore={isLoadedMore}
       />
+      
       <button
         onClick={loadMore}
         disabled={incrementalLength >= length}

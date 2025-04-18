@@ -15,7 +15,6 @@ export default function RootLayout({
 }>) {
   return (
     <div className={css.custom_wrapper}>
-      <HeaderDefault />
       {children}
       <Footer className={css.footer} />
       {/* <Popup /> */}

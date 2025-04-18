@@ -2,6 +2,7 @@ import clsx from "clsx";
 import css from "./index.module.css";
 import global from "@/app/globals.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Section1() {
   return (
@@ -20,7 +21,12 @@ export default function Section1() {
       </ul>
 
       <Link href="#">
-        <img src="../../sections/1st/Vector.svg" alt="" />
+        <Image
+          width={10}
+          height={10}
+          src="../../sections/1st/Vector.svg"
+          alt=""
+        />
       </Link>
     </section>
   );

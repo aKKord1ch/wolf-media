@@ -61,9 +61,13 @@
       width: 28px;
       height: 28px;
     }
-    @media (width <= 500px) {
+    @media (width <= 600px) {
       width: 44px;
       height: 44px;
+    }
+    @media (width <= 4250px) {
+      width: 38px;
+      height: 38px;
     }
   }
 
@@ -80,6 +84,10 @@
     vertical-align: middle;
 
     margin-left: 15px;
+
+    @media (width <= 600) {
+      font-size: 11px;
+    }
   }
 }
 

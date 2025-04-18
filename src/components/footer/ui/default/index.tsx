@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import Logo from '@/components/header/ui/logo';
 import { LinkItem } from '@/components/shared/link-item';
 import { HEADER_SOCIALS } from "@/model/header";
+import Image from "next/image";
 
 export default function FooterDefault() {
   return (
@@ -22,7 +23,7 @@ export default function FooterDefault() {
         <ul className={clsx(header.socials__list, css.socials__list)}>
           {HEADER_SOCIALS.map((item) => (
             <li className={header.soc__item} key={item.id}>
-              <img src={item.src} alt={item.alt} title={item.title} />
+              <Image width={24} height={24} src={item.src} alt={item.alt} title={item.title} />
             </li>
           ))}
         </ul>

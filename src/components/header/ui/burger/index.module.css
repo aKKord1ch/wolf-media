@@ -159,7 +159,7 @@
 .menu_icon {
   width: 30px;
   height: 30px;
-  position: relative; /* Для абсолютного позиционирования линий в active состоянии */
+  position: relative;
 
   display: flex;
   flex-direction: column;

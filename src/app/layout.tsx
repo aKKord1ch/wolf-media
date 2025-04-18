@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import HeaderDefault from "@/components/header";
-import Footer from "@/components/footer";
 import Popup from "@/components/shared/popup";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,8 +27,46 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <head></head>
+      <Head>
+        <title>Издательство новых медиа - Wolfmedia</title>
+        <meta
+          name="description"
+          content="Wolfmedia - это редакция, где ежедневно создается уникальный контент для огромной аудитории. Мы помогаем брендам наладить коммуникацию с аудиторией через социальные сети."
+        />
+        <meta
+          name="keywords"
+          content="издательство, новые медиа, социальные сети, контент, реклама, SMM, Wolfmedia"
+        />
+        <meta
+          property="og:title"
+          content="Издательство новых медиа - Wolfmedia"
+        />
+        <meta
+          property="og:description"
+          content="Wolfmedia - это редакция, где ежедневно создается уникальный контент для огромной аудитории."
+        />
+        <meta
+          property="og:image"
+          content="/public/header/WolfMEdia.svg"
+        />
+        <meta property="og:url" content="https://wolfmedia.team" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Издательство новых медиа - Wolfmedia"
+        />
+        <meta
+          name="twitter:description"
+          content="Wolfmedia - это редакция, где ежедневно создается уникальный контент для огромной аудитории."
+        />
+        <meta
+          name="twitter:image"
+          content="/public/header/WolfMEdia.svg"
+        />
+      </Head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <HeaderDefault />
         {children}
         {/* <Popup /> */}
       </body>

@@ -36,6 +36,9 @@
 
   gap: 1.563vw;
 
+  @media (width <= 900px) {
+  }
+
   @media (width <= 425px) {
     grid-template-columns: unset;
     grid-template-rows: repeat(3, 1fr);
@@ -58,14 +61,23 @@
     flex-direction: row;
   }
 
-  .padding_60 {
+  .p_60 {
     padding-left: 60px;
     padding-right: 60px;
+
+    @media (width <= 900px) {
+      padding: 0 7px;
+    }
   }
 
-  .padding_75 {
+  .p_75 {
     padding-left: 75px;
     padding-right: 75px;
+
+    @media (width <= 900px) {
+      padding: 0 7px;
+
+    }
   }
 
   span {
@@ -93,6 +105,7 @@
 
     @media (width <= 900px) {
       height: 80px;
+      padding: 0 7px;
     }
     @media (width <= 600px) {
       height: 70px;

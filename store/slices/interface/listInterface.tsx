@@ -1,30 +1,14 @@
-export interface Image {
-   src: string;
-   src2x: string;
-   tablet: string;
-   mobile: string;
-}
-
-export interface WebP {
-   src: string;
-   src2x: string;
-   tablet: string;
-   mobile: string;
-}
-
-export interface Poster {
-   color: string;
-   format: string;
-   video: string;
-   image: Image;
-   webp: WebP; 
-}
-
 export interface ListItem {
-   id: string,
-   tagsDisplayed: string,
-   title: string,
-   poster: Poster
+   slug: string;
+   poster: {
+     image: {
+       src: string;
+       alt: string;
+       current: string;
+     };
+   };
+   tagsDisplayed: string;
+   title: string;
 }
 
 export interface List {

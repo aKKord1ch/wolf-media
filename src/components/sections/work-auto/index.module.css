@@ -3,6 +3,9 @@
   flex-direction: column;
 
   padding-top: 120px;
+  @media (width <= 900px) {
+    padding-top: 80px;
+  }
 }
 
 .sub_title {
@@ -35,11 +38,16 @@
   
   object-fit: cover;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   @media (width <= 900px) {
     width: 100%;
   }
 
   img {
     width: 100%;
+    height: auto;
   }
 }

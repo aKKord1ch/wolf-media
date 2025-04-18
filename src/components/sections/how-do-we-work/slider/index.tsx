@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import css from "./index.module.css";
 import clsx from "clsx";
 import { HOW_DO_WE_WORK__SLIDER } from "@/model/how_do_we_work";
+import Image from "next/image";
 
 interface Slide {
   id: number;
@@ -71,7 +72,9 @@ export default function Slider() {
   return (
     <figure className={css.slider}>
       <picture>
-        <img
+        <Image
+          width={770}
+          height={433}
           src={curSlide.src}
           alt={curSlide.metaAlt}
           title={curSlide.metaTitle}
@@ -88,7 +91,9 @@ export default function Slider() {
             )}
             key={item.id}
           >
-            <img
+            <Image
+              width={194}
+              height={109}
               src={item.src}
               alt={item.metaAlt}
               title={item.metaTitle}

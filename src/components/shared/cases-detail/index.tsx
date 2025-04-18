@@ -2,6 +2,7 @@ import decodeString from "@/helpers/decodeString";
 import React, { useState } from "react";
 import css from "./index.module.css";
 import clsx from "clsx";
+import Image from "next/image";
 
 interface DetailItenProps {
   data: any;
@@ -21,17 +22,24 @@ export default function DetailItem({
   const imageKey = data?.poster?.image?.current || `img-${index}`;
 
   return (
-    <div className={clsx(css.item, className)} key={`div-${data.slug}-${index}`}>
+    <div
+      className={clsx(css.item, className)}
+      key={`div-${data.slug}-${index}`}
+    >
       <div
-        className={clsx(css.img_container, { [css.custom_height]: !imageLoaded })}
+        className={clsx(css.img_container, {
+          [css.custom_height]: !imageLoaded,
+        })}
         style={{
           backgroundColor: imageLoaded ? "transparent" : "var(--color4)",
         }}
         key={`div-${data.slug}-${index}`}
       >
         {imageSrc && (
-          <img
-            src={imageSrc}
+          <Image
+            width={500}
+            height={1000}
+            src={`${imageSrc}?q=100`}
             alt={imageAlt}
             key={imageKey}
             onLoad={() => setImageLoaded(true)}

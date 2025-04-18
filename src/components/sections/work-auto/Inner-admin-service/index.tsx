@@ -1,7 +1,8 @@
 import { WORK_AUTO__SERVICES } from "@/model/work_auto";
 import css from "./index.module.css";
 import clsx from "clsx";
-import global from '@/app/globals.module.css'
+import global from "@/app/globals.module.css";
+import Image from "next/image";
 
 export default function InnerAdminService() {
   return (
@@ -11,7 +12,9 @@ export default function InnerAdminService() {
       <ul className={css.list}>
         {WORK_AUTO__SERVICES.map((item) => (
           <li className={css.item} key={item.id}>
-            <img
+            <Image
+              width={10}
+              height={10}
               src={item.src}
               alt={item.metaAlt}
               title={item.metaTitle}
@@ -23,7 +26,9 @@ export default function InnerAdminService() {
         ))}
       </ul>
 
-      <button className={clsx(css.button, global.hovered_button, css.hidden_desk)}>
+      <button
+        className={clsx(css.button, global.hovered_button, css.hidden_desk)}
+      >
         <span>пордробнее</span>
       </button>
     </div>

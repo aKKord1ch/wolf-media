@@ -25,7 +25,10 @@
 
   gap: 20px;
 
-  @media (width <= 800px) {
+  @media (width <= 900px) {
+    margin-top: 40px;
+  }
+  @media (width <= 600px) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
   }
@@ -121,6 +124,14 @@
     width: 100px;
     height: 100px;
 
+    @media (width <= 900px) {
+      width: 90px;
+      height: 90px;
+    }
+    @media (width <= 750px) {
+      width: 75px;
+      height: 75px;
+    }
     @media (width <= 600px) {
       width: 64px;
       height: 64px;

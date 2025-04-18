@@ -20,8 +20,6 @@ export default function Slug() {
   useEffect(() => {
     const fetchedData = async (slug: any) => {
       const data: Detail = await getDetail(slug);
-
-
       setDetail(data);
     };
 

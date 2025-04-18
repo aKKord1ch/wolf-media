@@ -86,7 +86,6 @@
   }
 }
 
-/* Показать кнопку при прокрутке */
 @media (scroll-timeline: scroll) {
   .scroll_to_top {
     opacity: 1;

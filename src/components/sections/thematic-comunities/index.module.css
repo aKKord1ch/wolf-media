@@ -31,7 +31,7 @@
   }
 
   @media (width <= 600px) {
-    gap: 20px;
+    gap: 15px;
   }
 
   @media (width <= 425px) {
@@ -39,7 +39,6 @@
     grid-template-rows: repeat(2, 1fr);
 
     margin-top: 30px;
-    gap: 15px;
   }
 }
 
@@ -122,8 +121,8 @@
   }
 
   img {
-    width: clamp(35px, 5vw + 1rem, 100px);
-
+    width: 100px;
+    height: 100%;
     @media (width <= 900px) {
       width: 73px;
     }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import css from "./index.module.css";
 
 interface Inner {
@@ -18,7 +19,13 @@ export default function InnerComunities({ inner }: InnerComunitiesProps) {
       <ul className={css.list}>
         {inner.map((item) => (
           <li className={css.list_item} key={item.id}>
-            <img src={item.src} alt={item.metaAlt} title={item.metaTitle} />
+            <Image
+              width={80}
+              height={80}
+              src={item.src}
+              alt={item.metaAlt}
+              title={item.metaTitle}
+            />
             <span>{item.title}</span>
           </li>
         ))}

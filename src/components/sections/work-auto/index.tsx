@@ -5,6 +5,7 @@ import innerAdminStyle from "./Inner-admin-service/index.module.css";
 
 import InnerCardList from "./inner_card-list";
 import InnerAdminService from "./Inner-admin-service";
+import Image from "next/image";
 
 export default function WorkAuto() {
   return (
@@ -23,10 +24,20 @@ export default function WorkAuto() {
       <div className={css.services_container}>
         <InnerAdminService />
         <div className={css.img_container}>
-          <img src="/sections/work-auto/video.png" alt="video" title="video" />
+          <Image
+            width={770}
+            height={433}
+            src="/sections/work-auto/video.png"
+            alt="video"
+            title="video"
+          />
         </div>
         <button
-          className={clsx(innerAdminStyle.button, global.hovered_button, innerAdminStyle.hidden_mob)}
+          className={clsx(
+            innerAdminStyle.button,
+            global.hovered_button,
+            innerAdminStyle.hidden_mob
+          )}
         >
           <span>подробнее</span>
         </button>

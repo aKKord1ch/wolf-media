@@ -17,17 +17,21 @@
 }
 
 .item.item {
-  height: fit-content;
+  height: 50vh;
   max-width: 400px;
+
+  overflow: hidden;
+
   span:nth-of-type(1) {
-    @media (width <= 425) {
-      font-size: 18px;
-    }
+    font-size: 18px;
   }
+
   span:nth-of-type(2) {
-    @media (width <= 425) {
-      font-size: 14px;
-    }
+    font-size: 14px;
+  }
+
+  div {
+    height: 32vh;
   }
 }
 
