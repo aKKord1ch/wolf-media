@@ -253,7 +253,7 @@ button.mobile_button {
 
     position: absolute;
     left: -15px;
-    top: -3;
+    top: -3px;
 
     background-color: var(--accent-color);
   }
