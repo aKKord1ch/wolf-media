@@ -1,4 +1,4 @@
-import { DataResponse } from "@/components/cases-list";
+import { DataResponse } from "@/components/cases-list/interface/interface";
 import { baseURL } from "@/model/url";
 /* import { DeviceType, getDeviceType } from "../getDeviceType"; */
 
