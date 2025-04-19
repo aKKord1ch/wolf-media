@@ -80,7 +80,6 @@ const CasesList: React.FC = () => {
           <Link
             href={`/cases/${item.slug}`}
             key={`${item.slug}-${index}`}
-            target="_blank"
           >
             <li key={`li-${item.slug}-${index}`}>
               <DetailItem data={item} index={index} />

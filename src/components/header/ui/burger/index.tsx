@@ -8,13 +8,14 @@ import { ButtonItem } from "../../../shared/button-item";
 import clsx from "clsx";
 import { HEADER_MENU } from "@/model/header";
 import { transliterate } from "transliteration";
+import Link from "next/link";
 
 interface BurgerProps {
-  page: string,
-  setPage: Function
+  page: string;
+  setPage: Function;
 }
 
-export default function Burger({page, setPage}:BurgerProps) {
+export default function Burger({ page, setPage }: BurgerProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -25,7 +26,9 @@ export default function Burger({page, setPage}:BurgerProps) {
     const grad = document.querySelector("gradient_blur") as HTMLElement;
 
     if (header) {
-      header.style.backgroundColor = !isOpen ? "var(--background)" : "transparent";
+      header.style.backgroundColor = !isOpen
+        ? "var(--background)"
+        : "transparent";
     }
 
     if (html) {
@@ -71,7 +74,9 @@ export default function Burger({page, setPage}:BurgerProps) {
                   [css.active_nav]: page === transliterate(item.title),
                 })}
               >
-                <span>{item.title}</span>
+                <Link href={item.href}>
+                  <span>{item.title}</span>
+                </Link>
               </li>
             ))}
           </ul>

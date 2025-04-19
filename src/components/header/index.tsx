@@ -40,17 +40,17 @@ export default function HeaderDefault() {
           <nav className={css.navigation}>
             <ul className={css.nav__list}>
               {HEADER_MENU.map((item) => (
-                <Link href={item.href} key={`link-${item.id}`}>
-                  <li
-                    onClick={() => setCurPage(transliterate(item.title))}
-                    className={clsx(css.nav__item, {
-                      [css.active_nav]: curPage === transliterate(item.title),
-                    })}
-                    key={item.id}
-                  >
+                <li
+                  onClick={() => setCurPage(transliterate(item.title))}
+                  className={clsx(css.nav__item, {
+                    [css.active_nav]: curPage === transliterate(item.title),
+                  })}
+                  key={item.id}
+                >
+                  <Link href={item.href} key={`link-${item.id}`}>
                     <span>{item.title}</span>
-                  </li>
-                </Link>
+                  </Link>
+                </li>
               ))}
             </ul>
           </nav>
