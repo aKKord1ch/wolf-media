@@ -69,9 +69,9 @@ export default function Burger({ page, setPage }: BurgerProps) {
             {HEADER_MENU.map((item) => (
               <li
                 key={item.id}
-                onClick={() => setPage(transliterate(item.title))}
+                onClick={() => setPage(item.href)}
                 className={clsx(css.mob__nav_item, {
-                  [css.active_nav]: page === transliterate(item.title),
+                  [css.active_nav]: page === item.href,
                 })}
               >
                 <Link href={item.href}>

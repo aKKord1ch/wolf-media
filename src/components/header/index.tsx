@@ -8,12 +8,18 @@ import { ButtonItem } from "../shared/button-item";
 import { HEADER_MENU, HEADER_SOCIALS } from "@/model/header";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { transliterate } from "transliteration";
+import { usePathname } from "next/navigation";
 
 export default function HeaderDefault() {
-  const [curPage, setCurPage] = useState("/");
+  const [curPage, setCurPage] = useState("");
+  const path = usePathname();
+
+  useEffect(() => {
+    setCurPage(path);
+  });
 
   const setPage = (pg: string) => {
     setCurPage(pg);
@@ -41,9 +47,9 @@ export default function HeaderDefault() {
             <ul className={css.nav__list}>
               {HEADER_MENU.map((item) => (
                 <li
-                  onClick={() => setCurPage(transliterate(item.title))}
+                  onClick={() => setCurPage(item.href)}
                   className={clsx(css.nav__item, {
-                    [css.active_nav]: curPage === transliterate(item.title),
+                    [css.active_nav]: curPage === item.href,
                   })}
                   key={item.id}
                 >

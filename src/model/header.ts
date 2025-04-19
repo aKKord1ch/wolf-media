@@ -1,7 +1,7 @@
 export const HEADER_MENU = [
-   { id: 0, title: "о нас", href: '#' },
-   { id: 1, title: "Портфолио", href: '#' },
-   { id: 2, title: "Услуги", href: '#' },
+   { id: 0, title: "о нас", href: '/' },
+   { id: 1, title: "Портфолио", href: '/portfolio' },
+   { id: 2, title: "Услуги", href: '/services' },
    { id: 3, title: "Кейсы", href: '/cases' },
  ];
  
