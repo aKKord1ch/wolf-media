@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import css from "./index.module.css";
 import header_css from "../../index.module.css";
 import { LinkItem } from "../../../shared/link-item";
@@ -17,30 +17,31 @@ interface BurgerProps {
 export default function Burger({page, setPage}:BurgerProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
 
-  useEffect(() => {
     const header = document.querySelector("header");
-    if (!header) return;
-
-    header.style.backgroundColor = isOpen ? "var(--background)" : "transparent";
-
     const html = document.documentElement;
-    if (!html) return;
-
-    html.style.overflow = isOpen ? "hidden" : "auto";
-
     const grad = document.querySelector("gradient_blur") as HTMLElement;
-    if (!grad) return;
 
-    grad.style.visibility = isOpen ? "hidden" : "visible";
+    if (header) {
+      header.style.backgroundColor = !isOpen ? "var(--background)" : "transparent";
+    }
 
-    return () => {
-      header.style.backgroundColor = "transparent";
-      html.style.overflow = "auto";
-      grad.style.visibility = "visible";
-    };
-  }, [isOpen]);
+    if (html) {
+      html.style.overflow = !isOpen ? "hidden" : "auto";
+    }
+
+    if (grad) {
+      grad.style.visibility = !isOpen ? "hidden" : "visible";
+    }
+
+    if (isOpen) {
+      if (header) header.style.backgroundColor = "transparent";
+      if (html) html.style.overflow = "auto";
+      if (grad) grad.style.visibility = "visible";
+    }
+  };
 
   return (
     <div className={css.burger__container}>
@@ -78,7 +79,6 @@ export default function Burger({page, setPage}:BurgerProps) {
 
         <section className={css.nav_feedback}>
           <LinkItem tel="+7 495 257 55 65" className={css.link} />
-
           <ButtonItem className={css.mobile_button} />
         </section>
       </dialog>
