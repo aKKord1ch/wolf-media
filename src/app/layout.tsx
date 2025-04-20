@@ -53,6 +53,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/heart.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/heart.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/heart.png" />
+        <link rel="preload" as="image" href="/Desktop.webp" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <HeaderDefault />

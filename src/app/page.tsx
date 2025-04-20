@@ -7,7 +7,6 @@ import WorkAuto from "@/components/sections/work-auto";
 import QandA from "@/components/sections/q-n-a";
 
 import css from "./globals.module.css";
-import HeaderDefault from "@/components/header";
 import Footer from "@/components/footer";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,6 +14,20 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="wrapper">
+      <div className={css.image__container}>
+        <Image
+          src="/Desktop.webp"
+          alt="Background image"
+          width={1920}
+          height={1212}
+          objectFit="cover"
+          objectPosition="center"
+          priority
+          sizes="(max-width: 600px) 210vw, (max-width: 900px) 150vw, 110vw"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </div>
+
       <main>
         <Section1 />
         <Section2 />
@@ -29,18 +42,6 @@ export default function Home() {
         </Link>
       </main>
       <Footer />
-
-      <div className={css.image__container}>
-        <Image
-          src="/Desktop.webp"
-          alt="Background image"
-          width={1920}
-          height={1212}
-          objectFit="cover"
-          objectPosition="center"
-          priority
-        />
-      </div>
     </div>
   );
 }
