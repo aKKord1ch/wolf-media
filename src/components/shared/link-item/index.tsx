@@ -18,6 +18,7 @@ export const LinkItem = ({
 }: LinkItemProps) => {
   return (
     <Link
+      aria-label="phone"
       href="tel:+7 495 257 55 65"
       className={cx(css.phone__link, className)}
     >

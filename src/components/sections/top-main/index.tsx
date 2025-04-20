@@ -20,7 +20,7 @@ export default function Section1() {
         </li>
       </ul>
 
-      <Link href="#">
+      <Link aria-label="scroll to bloc" href="#target">
         <Image
           width={10}
           height={10}

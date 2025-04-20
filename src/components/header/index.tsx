@@ -34,7 +34,7 @@ export default function HeaderDefault() {
 
         <li className={css.header__item}>
           <div className={css.item__image}>
-            <Link href={"/"} className={css.link}>
+            <Link aria-label="Home" href={"/"} className={css.link}>
               <Logo
                 def="/header/WolfMEdia.svg"
                 tablet="/header/logo600.svg"
@@ -53,7 +53,7 @@ export default function HeaderDefault() {
                   })}
                   key={item.id}
                 >
-                  <Link href={item.href} key={`link-${item.id}`}>
+                  <Link aria-label={item.title} href={item.href} key={`link-${item.id}`}>
                     <span>{item.title}</span>
                   </Link>
                 </li>
@@ -66,7 +66,7 @@ export default function HeaderDefault() {
           <ul className={css.socials__list}>
             {HEADER_SOCIALS.map((item) => (
               <li className={css.soc__item} key={item.id}>
-                <Link href={item.href} target="_blank">
+                <Link aria-label={item.alt} href={item.href} target="_blank">
                   <Image
                     width={24}
                     height={24}

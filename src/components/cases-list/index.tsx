@@ -20,7 +20,6 @@ const CasesList: React.FC = () => {
   const [incrementalLength, setIncrementalLength] = useState<number>(0);
   const [isLoadedMore, setIsLoadedMore] = useState<boolean>(false);
 
-
   const fetchData = async () => {
     const data: DataResponse = await getItems(10);
     setLength(data.length);
@@ -31,8 +30,8 @@ const CasesList: React.FC = () => {
   };
 
   useEffect(() => {
-  const localStorageData = getLocalStorageData("cards");
-    
+    const localStorageData = getLocalStorageData("cards");
+
     if (localStorageData !== "") {
       setShow(localStorageData.items);
       setLength(localStorageData.length);
@@ -71,11 +70,15 @@ const CasesList: React.FC = () => {
 
       <ul className={css.list}>
         {show.map((item: Item, index) => (
-          <Link href={`/cases/${item.slug}`} key={`${item.slug}-${index}`}>
-            <li key={`li-${item.slug}-${index}`}>
+          <li key={`li-${item.slug}-${index}`}>
+            <Link
+              aria-label={`карточка с названием ${item.title}`}
+              href={`/cases/${item.slug}`}
+              key={`${item.slug}-${index}`}
+            >
               <DetailItem data={item} index={index} />
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
 

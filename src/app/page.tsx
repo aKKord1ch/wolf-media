@@ -9,6 +9,7 @@ import QandA from "@/components/sections/q-n-a";
 import css from "./globals.module.css";
 import HeaderDefault from "@/components/header";
 import Footer from "@/components/footer";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -22,9 +23,9 @@ export default function Home() {
         <WorkAuto />
         <QandA />
 
-        <a href="#" className={css.scroll_to_top}>
+        <Link href="#" aria-label="scroll to top" className={css.scroll_to_top}>
           ↑
-        </a>
+        </Link>
       </main>
 
       <Footer />

@@ -7,7 +7,7 @@ import React from "react";
 
 export default function Section4() {
   return (
-    <section className={clsx(global.container, css.section)}>
+    <section className={clsx(global.container, css.section)} id="target">
       <span className={global.main_title}>Как мы работаем</span>
 
       <ul className={css.list_main}>

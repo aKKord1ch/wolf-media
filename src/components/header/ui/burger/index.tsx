@@ -74,7 +74,7 @@ export default function Burger({ page, setPage }: BurgerProps) {
                   [css.active_nav]: page === item.href,
                 })}
               >
-                <Link href={item.href}>
+                <Link aria-label={item.title} href={item.href}>
                   <span>{item.title}</span>
                 </Link>
               </li>
