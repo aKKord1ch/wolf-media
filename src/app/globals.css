@@ -87,32 +87,6 @@ li {
   position: relative;
 }
 
-.wrapper::after {
-  content: "";
-
-  min-height: 70vw;
-  width: 100%;
-
-  display: block;
-
-  background-image: url("/Desktop.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-
-  @media (width <= 1400px) {
-    min-height: 100vw;
-  }
-  @media (width <= 900px) {
-    min-height: 120vw;
-  }
-}
-
 main {
   position: relative;
   z-index: 102;

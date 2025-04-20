@@ -10,6 +10,7 @@ import css from "./globals.module.css";
 import HeaderDefault from "@/components/header";
 import Footer from "@/components/footer";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -27,8 +28,19 @@ export default function Home() {
           ↑
         </Link>
       </main>
-
       <Footer />
+
+      <div className={css.image__container}>
+        <Image
+          src="/Desktop.webp"
+          alt="Background image"
+          width={1920}
+          height={1212}
+          objectFit="cover"
+          objectPosition="center"
+          priority
+        />
+      </div>
     </div>
   );
 }

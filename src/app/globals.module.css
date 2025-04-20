@@ -5,6 +5,29 @@
   padding-right: 15px;
 }
 
+.image__container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110vw;
+  height: auto;
+  overflow: hidden;
+
+  @media (width <= 900px) {
+    width: 150vw;
+  }
+  @media (width <= 600px) {
+    width: 210vw;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
 .main_title {
   font-family: var(--main-font-titles);
   font-weight: 900;
