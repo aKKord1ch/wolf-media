@@ -9,41 +9,35 @@ import Link from "next/link";
 import Pagination from "./pagination";
 import DetailItem from "../shared/cases-detail";
 import { DataResponse, Item } from "./interface/interface";
-import { useDispatch, useSelector } from "react-redux";
-import { setItem } from "../../../store/slices/listReducer";
+import {
+  getLocalStorageData,
+  setLocalStorageData,
+} from "@/helpers/localStorage";
 
 const CasesList: React.FC = () => {
-  const dispatch = useDispatch();
-  const data = useSelector((state: any) => state.list.items || []);
-
-  console.log('lskdmflakdmfl',data)
-
   const [length, setLength] = useState<number>(0);
   const [show, setShow] = useState<Item[]>([]);
   const [incrementalLength, setIncrementalLength] = useState<number>(0);
   const [isLoadedMore, setIsLoadedMore] = useState<boolean>(false);
 
+
+  const fetchData = async () => {
+    const data: DataResponse = await getItems(10);
+    setLength(data.length);
+    setShow(data.items);
+    setIncrementalLength(data.items.length);
+
+    setLocalStorageData("cards", data);
+  };
+
   useEffect(() => {
-    const storeData = () => {
-      setLength(data.length);
-      setShow(data);
-      setIncrementalLength(data.length);
-    };
-
-    const fetchData = async () => {
-      const data: DataResponse = await getItems(10);
-      setLength(data.length);
-      setShow(data.items);
-      setIncrementalLength(data.items.length);
-
-      dispatch(setItem(data.items))
-    };
-
-    if (data.length !== 0) {
-      console.log('STORE')
-      storeData();
+  const localStorageData = getLocalStorageData("cards");
+    
+    if (localStorageData !== "") {
+      setShow(localStorageData.items);
+      setLength(localStorageData.length);
+      setIncrementalLength(localStorageData.items.length);
     } else {
-      console.log('FETCH')
       fetchData();
     }
   }, []);
@@ -77,10 +71,7 @@ const CasesList: React.FC = () => {
 
       <ul className={css.list}>
         {show.map((item: Item, index) => (
-          <Link
-            href={`/cases/${item.slug}`}
-            key={`${item.slug}-${index}`}
-          >
+          <Link href={`/cases/${item.slug}`} key={`${item.slug}-${index}`}>
             <li key={`li-${item.slug}-${index}`}>
               <DetailItem data={item} index={index} />
             </li>
@@ -93,7 +84,7 @@ const CasesList: React.FC = () => {
         length={length}
         isLoadedMore={isLoadedMore}
       />
-      
+
       <button
         onClick={loadMore}
         disabled={incrementalLength >= length}
