@@ -9,6 +9,9 @@ import clsx from "clsx";
 import { HEADER_MENU } from "@/model/header";
 import { transliterate } from "transliteration";
 import Link from "next/link";
+import NavigationDefault from "../nav_default";
+import { Provider } from "react-redux";
+import store from "../../../../../store";
 
 interface BurgerProps {
   page: string;
@@ -64,23 +67,16 @@ export default function Burger({ page, setPage }: BurgerProps) {
         className={clsx(css.mobile_nav, isOpen && css.visible)}
         id="mob-nav"
       >
-        <nav className={css.mob__navigation}>
-          <ul className={css.mob__nav__list}>
-            {HEADER_MENU.map((item) => (
-              <li
-                key={item.id}
-                onClick={() => setPage(item.href)}
-                className={clsx(css.mob__nav_item, {
-                  [css.active_nav]: page === item.href,
-                })}
-              >
-                <Link aria-label={item.title} href={item.href}>
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <Provider store={store}>
+          <NavigationDefault
+            classActive={css.active_nav}
+            classList={css.mob__nav__list}
+            classNavItem={css.mob__nav_item}
+            classNavigation={css.mob__navigation}
+            curPage={page}
+            setPage={setPage}
+          />
+        </Provider>
 
         <section className={css.nav_feedback}>
           <LinkItem tel="+7 495 257 55 65" className={css.link} />

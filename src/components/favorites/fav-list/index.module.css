@@ -1,0 +1,14 @@
+.list {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: auto;
+ 
+   margin-top: 40px;
+ 
+   gap: 30px;
+ 
+   @media (width <= 600px) {
+     grid-template-columns: auto;
+   }
+ }
+ 

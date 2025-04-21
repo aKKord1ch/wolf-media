@@ -14,10 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={css.custom_wrapper}>
+    <>
       {children}
       <Footer className={css.footer} />
       {/* <Popup /> */}
-    </div>
+    </>
   );
 }

@@ -8,7 +8,7 @@ import { useMediaQuery } from "@mui/material";
 import { ABOUT_US__DESCRIPTION, ABOUT_US__TIMELINE } from "@/model/about_us";
 import TimelineRow from "./timeline-row";
 
-export default function Section2() {
+export default function AboutUs() {
   const isMobile = useMediaQuery("(width <= 600px)");
 
   return (

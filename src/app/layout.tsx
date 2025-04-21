@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import HeaderDefault from "@/components/header";
 import Popup from "@/components/shared/popup";
+import Image from "next/image";
+import css from "./globals.module.css";
+import { Provider } from "react-redux";
+import store from "../../store";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +18,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Определяем метаданные
 export const metadata: Metadata = {
   title: "Издательство новых медиа - Wolfmedia",
   description:
@@ -56,9 +59,24 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/Desktop.webp" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <HeaderDefault />
-        {children}
-        {/* <Popup /> */}
+        <div className="wrapper">
+          <div className={css.image__container}>
+            <Image
+              src="/Desktop.webp"
+              alt="Background image"
+              width={1920}
+              height={1212}
+              objectFit="cover"
+              objectPosition="center"
+              priority
+              sizes="(max-width: 600px) 210vw, (max-width: 900px) 150vw, 110vw"
+              style={{ width: "100%", height: "auto" }}
+            />
+          </div>
+          <HeaderDefault />
+          {children}
+          {/* <Popup /> */}
+        </div>
       </body>
     </html>
   );

@@ -1,0 +1,33 @@
+.count {
+   position: relative;
+   width: 15px;
+   height: 15px;
+   z-index: 100;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+ 
+   color: var(--white);
+   font-size: inherit;
+
+ }
+ 
+ .favs {
+
+
+   &::before {
+      content: "";
+      display: block;
+      width: 15px;
+      height: 15px;
+  
+      position: absolute;
+      top: 50%;
+      right: -7px;
+      z-index: 1;
+  
+      transform: translate(-50%, -50%);
+      background-color: var(--accent-color);
+      border-radius: 50%;
+    }
+ }

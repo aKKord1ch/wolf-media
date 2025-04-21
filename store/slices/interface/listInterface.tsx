@@ -12,5 +12,5 @@ export interface ListItem {
 }
 
 export interface List {
-   items: ListItem[]
+  favs: ListItem[]
 }

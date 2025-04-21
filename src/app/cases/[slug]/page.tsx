@@ -14,10 +14,11 @@ import clsx from "clsx";
 export default function Slug() {
   const [detail, setDetail] = useState<Detail | undefined>(undefined);
   const { slug } = useParams();
-  const a = useParams()
-  console.log('asdfasdf',a)
+  const a = useParams();
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
+
     const fetchedData = async (slug: any) => {
       const data: Detail = await getDetail(slug);
       setDetail(data);
@@ -31,7 +32,7 @@ export default function Slug() {
   return (
     <main className={css.main}>
       <section className={clsx(global.container, css.section)}>
-        { detail && <DetailItem data={detail} index={0} className={css.item} />}
+        {detail && <DetailItem data={detail} index={0} className={css.item} />}
       </section>
     </main>
   );

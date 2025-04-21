@@ -79,6 +79,8 @@
 }
 
 .mob__nav_item {
+  width: fit-content;
+
   font-family: "Main Font Regular";
 
   font-weight: 500;

@@ -4,7 +4,7 @@ import global from "@/app/globals.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Section1() {
+export default function TopMain() {
   return (
     <section className={clsx(css.section, global.container)}>
       <span className={css.main_title}>Издательство новых медиа</span>

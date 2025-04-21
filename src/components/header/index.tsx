@@ -12,6 +12,9 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { transliterate } from "transliteration";
 import { usePathname } from "next/navigation";
+import { Provider } from "react-redux";
+import store from "../../../store";
+import NavigationDefault from "./ui/nav_default";
 
 export default function HeaderDefault() {
   const [curPage, setCurPage] = useState("");
@@ -43,23 +46,9 @@ export default function HeaderDefault() {
             </Link>
           </div>
 
-          <nav className={css.navigation}>
-            <ul className={css.nav__list}>
-              {HEADER_MENU.map((item) => (
-                <li
-                  onClick={() => setCurPage(item.href)}
-                  className={clsx(css.nav__item, {
-                    [css.active_nav]: curPage === item.href,
-                  })}
-                  key={item.id}
-                >
-                  <Link aria-label={item.title} href={item.href} key={`link-${item.id}`}>
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <Provider store={store}>
+              <NavigationDefault classNavigation={css.navigation} classActive={css.active_nav} classList={css.nav__list} classNavItem={css.nav__item} curPage={curPage} setPage={setPage}  />
+          </Provider>
         </li>
 
         <li className={css.header__item}>

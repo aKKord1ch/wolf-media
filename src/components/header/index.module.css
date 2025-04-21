@@ -134,17 +134,17 @@
   position: relative;
   z-index: 2;
 
-  @media (max-width: 500px) {
+  @media (max-width: 1060px) {
     font-size: 12px;
+  }
+  @media (max-width: 500px) {
+    font-size: 10px;
   }
 }
 
 .navigation {
   margin-left: 4.125vw;
 
-  @media (max-width: 600px) {
-    margin-left: 60px;
-  }
   @media (max-width: 530px) {
     margin-left: 40px;
   }

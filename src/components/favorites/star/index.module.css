@@ -1,0 +1,8 @@
+.star_container {
+   width: fit-content;
+   margin-top: 10px;
+
+   &:hover {
+      cursor: alias;
+   }
+}

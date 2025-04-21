@@ -1,8 +1,13 @@
+"use client";
+
 import decodeString from "@/helpers/decodeString";
 import React, { useState } from "react";
 import css from "./index.module.css";
 import clsx from "clsx";
 import Image from "next/image";
+import Star from "@/components/favorites/star";
+import { Provider } from "react-redux";
+import store from "../../../../store";
 
 interface DetailItenProps {
   data: any;
@@ -53,6 +58,10 @@ export default function DetailItem({
       <span className={css.sub_title} key={`sub_title-${data.slug}-${index}`}>
         {decodeString(data.title)}
       </span>
+
+      <Provider store={store}>
+        <Star data={data} />
+      </Provider>
     </div>
   );
 }

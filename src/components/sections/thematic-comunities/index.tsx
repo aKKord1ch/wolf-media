@@ -5,7 +5,7 @@ import InnerComunities from "./inner-comunities";
 import { THEMATIC_COMUNITY__CARDS } from "@/model/thematic_comunity";
 import Image from "next/image";
 
-export default function Section3() {
+export default function ThematicComunities() {
   return (
     <section className={clsx(css.section, global.container)}>
       <span className={global.main_title}>

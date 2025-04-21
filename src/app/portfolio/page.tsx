@@ -1,7 +1,7 @@
 const Portfolio = () => {
    return (
      <div className="wrapper">
- 
+
      </div>
    );
  };

@@ -2,19 +2,22 @@ import { createSlice, PayloadAction  } from "@reduxjs/toolkit";
 import { List, ListItem } from "./interface/listInterface";
 
 const initialState: List = {
-   items: []
+   favs: []
 }
 
 const listSlice = createSlice({
-   name: 'uuu',
+   name: 'slug_favorites',
    initialState,
    reducers: {
-      setItem: (state, action: PayloadAction<ListItem[]> ) => {
-         state.items = action.payload
+      addToFavorites: (state, action: PayloadAction<ListItem> ) => {
+         state.favs = [...state.favs, action.payload]
+      },
+      removeFromFavorites: (state, action: PayloadAction<ListItem>) => {
+         state.favs = state.favs.filter((item: Readonly<ListItem>) => item.slug !== action.payload.slug)
       }
    }
 })
 
-export const {setItem} =  listSlice.actions;
+export const {addToFavorites, removeFromFavorites} =  listSlice.actions;
 
 export default listSlice.reducer;

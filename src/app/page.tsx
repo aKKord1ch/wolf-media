@@ -1,7 +1,7 @@
-import Section1 from "@/components/sections/top-main";
-import Section2 from "@/components/sections/about-us";
-import Section3 from "@/components/sections/thematic-comunities";
-import Section4 from "@/components/sections/how-do-we-work";
+import TopMain from "@/components/sections/top-main";
+import AboutUs from "@/components/sections/about-us";
+import ThematicComunities from "@/components/sections/thematic-comunities";
+import HowDoWeWork from "@/components/sections/how-do-we-work";
 import HelpingBrands from "@/components/sections/helping-brands";
 import WorkAuto from "@/components/sections/work-auto";
 import QandA from "@/components/sections/q-n-a";
@@ -9,30 +9,15 @@ import QandA from "@/components/sections/q-n-a";
 import css from "./globals.module.css";
 import Footer from "@/components/footer";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="wrapper">
-      <div className={css.image__container}>
-        <Image
-          src="/Desktop.webp"
-          alt="Background image"
-          width={1920}
-          height={1212}
-          objectFit="cover"
-          objectPosition="center"
-          priority
-          sizes="(max-width: 600px) 210vw, (max-width: 900px) 150vw, 110vw"
-          style={{ width: "100%", height: "auto" }}
-        />
-      </div>
-
+    <>
       <main>
-        <Section1 />
-        <Section2 />
-        <Section3 />
-        <Section4 />
+        <TopMain />
+        <AboutUs />
+        <ThematicComunities />
+        <HowDoWeWork />
         <HelpingBrands />
         <WorkAuto />
         <QandA />
@@ -42,6 +27,6 @@ export default function Home() {
         </Link>
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
