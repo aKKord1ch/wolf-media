@@ -5,8 +5,7 @@ import HeaderDefault from "@/components/header";
 import Popup from "@/components/shared/popup";
 import Image from "next/image";
 import css from "./globals.module.css";
-import { Provider } from "react-redux";
-import store from "../../store";
+import { Providers } from "../../store/provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -73,8 +72,10 @@ export default function RootLayout({
               style={{ width: "100%", height: "auto" }}
             />
           </div>
-          <HeaderDefault />
-          {children}
+          <Providers>
+            <HeaderDefault />
+            {children}
+          </Providers>
           {/* <Popup /> */}
         </div>
       </body>

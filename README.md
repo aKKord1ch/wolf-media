@@ -34,3 +34,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+## How Redux logic work ?
+
+I used Redux logic for '/favorites' page and for header`s item "Избранное". 
+
+It's work like this:
+
+
+- You press icon "Star" in the bottom of the card on page "Cases", by that move you adding card, star you pressed where, to your "Favorites". If you would press again, that card will be removed from your favorite items
+
+- Next to the nav-item "Избранное" on the right side exist span, where you can see count of your favorite cards

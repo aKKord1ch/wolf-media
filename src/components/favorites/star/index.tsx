@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import css from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../store";
@@ -9,6 +9,7 @@ import {
   removeFromFavorites,
 } from "../../../../store/slices/listReducer";
 import { ListItem } from "../../../../store/slices/interface/listInterface";
+import { getLocalStorageData } from "@/helpers/localStorage";
 
 interface StarProps {
   data: ListItem;
@@ -16,7 +17,7 @@ interface StarProps {
 
 export default function Star({ data }: StarProps) {
   const favs = useSelector((state: RootState) => state.list.favs);
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch();
 
   const isFavorite = favs.some((item) => item.slug === data.slug);
 
