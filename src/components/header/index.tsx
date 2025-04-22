@@ -34,12 +34,14 @@ export default function HeaderDefault() {
         dispatch(addToFavorites(item));
       });
     }
+
+    if (document) {
+      document.documentElement.style.overflow = isOpen ? "hidden" : "auto";
+      document.body.style.overflow = isOpen ? "hidden" : "auto";
+    }
   });
 
-  if (document) {
-    document.documentElement.style.overflow = isOpen ? "hidden" : "auto";
-    document.body.style.overflow = isOpen ? "hidden" : "auto";
-  }
+
 
   const setPage = (pg: string) => {
     setCurPage(pg);
