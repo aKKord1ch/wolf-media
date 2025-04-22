@@ -1,3 +1,43 @@
+.opened {
+  visibility: visible;
+  opacity: 1;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: 100000;
+
+  visibility: hidden;
+  opacity: 0;
+  
+  transition: visibility 0s linear 0.5s, opacity 0.5s ease;
+}
+
+.wrapper.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: visible;
+  }
+  
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .dialog {
   position: absolute;
   top: 50%;
@@ -9,6 +49,28 @@
   border: none;
   display: block;
   z-index: 1001;
+}
+
+.cross {
+  content: '';
+
+  display: block;
+  width: 15px;
+  height: 15px;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1002;
+
+  background-image: url('/crosshair.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .title {

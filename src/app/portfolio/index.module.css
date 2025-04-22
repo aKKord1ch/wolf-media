@@ -1,0 +1,63 @@
+.triangle_conatiner {
+   background-color: transparent;
+   position: absolute;
+
+   z-index: 5;
+
+   width: 500px;
+   height: 400px;
+}
+
+.left_circle{
+   width: 275px;
+   height: 300px;
+
+   position: absolute;
+   left: 0;
+   top: 50%;
+   z-index: 1;
+
+   transform: translate(0, -50%);
+
+   background-color: red;
+
+   clip-path: circle();
+}
+
+.right_circle{
+   width: 275px;
+   height: 300px;
+
+   position: absolute;
+   right: 0;
+   top: 50%;
+   transform: translate(0, -50%);
+   z-index: 1;
+
+   background-color: red;
+
+   clip-path: circle();
+}
+
+.triangle {
+   width: 500px;
+   height: 400px;
+
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   z-index: 3;
+
+   transform: translate(-50%, 0%);
+
+   background-color: blue;
+
+   clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      50% 100%
+   );
+
+   border: 5px solid red;
+
+}

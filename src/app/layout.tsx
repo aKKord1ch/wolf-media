@@ -76,7 +76,6 @@ export default function RootLayout({
             <HeaderDefault />
             {children}
           </Providers>
-          {/* <Popup /> */}
         </div>
       </body>
     </html>

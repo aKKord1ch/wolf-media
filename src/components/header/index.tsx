@@ -16,9 +16,12 @@ import NavigationDefault from "./ui/nav_default";
 import { getLocalStorageData } from "@/helpers/localStorage";
 import { addToFavorites } from "../../../store/slices/listReducer";
 import { ListItem } from "../../../store/slices/interface/listInterface";
+import Popup from "../shared/popup";
 
 export default function HeaderDefault() {
   const [curPage, setCurPage] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
   const path = usePathname();
 
   useEffect(() => {
@@ -33,17 +36,24 @@ export default function HeaderDefault() {
     }
   });
 
-  const dispatch = useDispatch<AppDispatch>();
+  if (document) {
+    document.documentElement.style.overflow = isOpen ? "hidden" : "auto";
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }
 
   const setPage = (pg: string) => {
     setCurPage(pg);
+  };
+
+  const setOpen = () => {
+    setIsOpen((prev) => !prev);
   };
 
   return (
     <header className={css.header}>
       <ul className={css.list_items}>
         <li className={css.header__item + " " + css.hidden}>
-          <Burger page={curPage} setPage={setPage} />
+          <Burger page={curPage} setPage={setPage} setOpen={setOpen} />
         </li>
 
         <li className={css.header__item}>
@@ -88,7 +98,7 @@ export default function HeaderDefault() {
 
           <LinkItem tel="+7 495 257 55 65" />
 
-          <ButtonItem />
+          <ButtonItem setOpen={setOpen} />
         </li>
       </ul>
 
@@ -100,6 +110,8 @@ export default function HeaderDefault() {
         <div></div>
         <div></div>
       </div>
+
+      <Popup isOpen={isOpen} setOpen={setOpen} />
     </header>
   );
 }

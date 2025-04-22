@@ -16,9 +16,10 @@ import store from "../../../../../store";
 interface BurgerProps {
   page: string;
   setPage: Function;
+  setOpen: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export default function Burger({ page, setPage }: BurgerProps) {
+export default function Burger({ page, setPage, setOpen }: BurgerProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -80,7 +81,7 @@ export default function Burger({ page, setPage }: BurgerProps) {
 
         <section className={css.nav_feedback}>
           <LinkItem tel="+7 495 257 55 65" className={css.link} />
-          <ButtonItem className={css.mobile_button} />
+          <ButtonItem className={css.mobile_button} setOpen={setOpen} />
         </section>
       </dialog>
 

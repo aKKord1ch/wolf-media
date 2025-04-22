@@ -1,35 +1,58 @@
+"use client";
+
 import clsx from "clsx";
 import css from "./index.module.css";
 
-export default function Popup() {
+interface PopupInterface {
+  isOpen: boolean;
+  setOpen: () => void;
+}
+
+export default function Popup({ isOpen, setOpen }: PopupInterface) {
+  
+  const handleClickOutside = (event: React.MouseEvent<HTMLDivElement>) => {
+    const dialog = document.getElementById("popup");
+    if (dialog && !dialog.contains(event.target as Node)) {
+      setOpen();
+    }
+  };
+
+
   return (
-    <dialog className={css.dialog}>
-      <span className={css.title}>Написать нам</span>
+    <div
+      className={clsx(css.wrapper, { [css.opened]: isOpen })}
+      onClick={(e) => handleClickOutside(e)}
+    >
+      <dialog className={css.dialog} id="popup">
+        <div className={css.cross} onClick={() => setOpen()}></div>
 
-      <form className={css.form}>
-        <label className={clsx(css.label, css.name)}>
-          <input type="text" placeholder="Ваше имя"/>
-          <span>Ваше имя</span>
-        </label>
+        <span className={css.title}>Написать нам</span>
 
-        <label className={clsx(css.label, css.tel)}>
-          <input type="tel" placeholder="Ваш телефон"/>
-          <span>Ваш телефон</span>
-        </label>
+        <form className={css.form}>
+          <label className={clsx(css.label, css.name)}>
+            <input type="text" placeholder="Ваше имя" />
+            <span>Ваше имя</span>
+          </label>
 
-        <label className={clsx(css.label, css.mess)}>
-          <input type="text" placeholder="Ваше сообщение"/>
-        </label>
+          <label className={clsx(css.label, css.tel)}>
+            <input type="tel" placeholder="Ваш телефон" />
+            <span>Ваш телефон</span>
+          </label>
 
-        <button>
-          <span>Отправить</span>
-        </button>
+          <label className={clsx(css.label, css.mess)}>
+            <input type="text" placeholder="Ваше сообщение" />
+          </label>
 
-        <span>
-          Нажимая кнопку “Отправить” вы даёте своё согласие на обработку
-          персональных данных
-        </span>
-      </form>
-    </dialog>
+          <button>
+            <span>Отправить</span>
+          </button>
+
+          <span>
+            Нажимая кнопку “Отправить” вы даёте своё согласие на обработку
+            персональных данных
+          </span>
+        </form>
+      </dialog>
+    </div>
   );
 }

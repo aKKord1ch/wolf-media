@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { List, ListItem } from "./interface/listInterface";
 import { setLocalStorageData } from "@/helpers/localStorage";
+import { setCookie } from "@/helpers/cookie";
 
 const initialState: List = {
   favs: [],
@@ -16,13 +17,15 @@ const listSlice = createSlice({
       ) {
         state.favs = [...state.favs, action.payload];
         setLocalStorageData("fav-cards", state.favs);
+        setCookie("count-fav-cards", state.favs.length);
       }
     },
     removeFromFavorites: (state, action: PayloadAction<ListItem>) => {
       state.favs = state.favs.filter(
         (item: Readonly<ListItem>) => item.slug !== action.payload.slug
       );
-      setLocalStorageData("fav-cards", state.favs)
+      setLocalStorageData("fav-cards", state.favs);
+      setCookie("count-fav-cards", state.favs.length);
     },
   },
 });

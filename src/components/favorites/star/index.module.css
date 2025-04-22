@@ -1,8 +1,61 @@
-.star_container {
-   width: fit-content;
-   margin-top: 10px;
+.heart {
+  width: 70px;
+  height: 70px;
 
-   &:hover {
-      cursor: alias;
-   }
+  background-color: #dc143c;
+
+  position: relative;
+
+  margin-top: 10px;
+
+  clip-path: polygon(
+    50% 15%,
+    61% 5%,
+    75% 5%,
+    85% 15%,
+    85% 30%,
+    50% 60%,
+    15% 30%,
+    15% 15%,
+    25% 5%,
+    39% 5%
+  );
+
+  
+}
+
+.heart:hover {
+  cursor: url("/cursor.png") 16 16, auto;
+  z-index: 10000;
+}
+
+.disabled {
+  position: relative;
+  &::after {
+    content: "";
+
+    width: 60px;
+    height: 60px;
+
+    position: absolute;
+    top: 49.5%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background-color: var(--color3);
+
+    clip-path: polygon(
+      50% 13%,
+      63% 2%,
+      78% 2%,
+      87% 12%,
+      87% 27.5%,
+      50% 58.5%,
+      13% 27.5%,
+      13% 12%,
+      23% 2%,
+      36% 2%
+    );
+  }
 }

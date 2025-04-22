@@ -3,10 +3,11 @@
 import { HEADER_MENU } from "@/model/header";
 import clsx from "clsx";
 import Link from "next/link";
-import React from "react";
+import css from "./index.module.css";
+import { getCookie } from "@/helpers/cookie";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../../store";
-import css from "./index.module.css";
 
 interface NavProps {
   classList: string;
@@ -14,7 +15,7 @@ interface NavProps {
   classActive: string;
   curPage: string;
   setPage: Function;
-  classNavigation: string
+  classNavigation: string;
 }
 
 export default function NavigationDefault({
@@ -23,9 +24,26 @@ export default function NavigationDefault({
   classList,
   classNavItem,
   classActive,
-  classNavigation
+  classNavigation,
 }: NavProps) {
+  const countCookie = getCookie("count-fav-cards");
   const store = useSelector((state: RootState) => state.list.favs);
+  console.log(store)
+
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (countCookie) {
+      setCount(countCookie);
+
+      setTimeout(() => {
+        setCount(store.length);
+        console.log(store.length)
+      }, 100);
+    } else {
+      setCount(store.length);
+    }
+  }, []);
 
   return (
     <nav className={clsx(classNavigation)}>
@@ -42,11 +60,13 @@ export default function NavigationDefault({
               aria-label={item.title}
               href={item.href}
               key={`link-${item.id}`}
-              className={clsx(css.link, {[css.favs]: item.href === "/favorites"})}
+              className={clsx(css.link, {
+                [css.favs]: item.href === "/favorites",
+              })}
             >
               <span>{item.title}</span>
               {item.href === "/favorites" && (
-                <span className={css.count}>{store.length}</span>
+                <span className={css.count}>{count}</span>
               )}
             </Link>
           </li>
