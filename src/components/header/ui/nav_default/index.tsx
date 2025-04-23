@@ -4,6 +4,7 @@ import Link from "next/link";
 import css from "./index.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../../store";
+import { useState } from "react";
 
 interface NavProps {
   classList: string;
@@ -11,7 +12,8 @@ interface NavProps {
   classActive: string;
   curPage: string;
   setPage: Function;
-  classNavigation: string
+  classNavigation: string;
+  isReady: boolean;
 }
 
 export default function NavigationDefault({
@@ -20,10 +22,10 @@ export default function NavigationDefault({
   classList,
   classNavItem,
   classActive,
-  classNavigation
+  classNavigation,
+  isReady,
 }: NavProps) {
-  
-  const store = useSelector((state: RootState) => state.list.favs)
+  const store = useSelector((state: RootState) => state.list.favs);
 
   return (
     <nav className={clsx(classNavigation)}>
@@ -36,17 +38,23 @@ export default function NavigationDefault({
             })}
             key={item.id}
           >
-            <Link
-              aria-label={item.title}
-              href={item.href}
-              key={`link-${item.id}`}
-              className={clsx(css.link, {[css.favs]: item.href === "/favorites"})}
-            >
-              <span>{item.title}</span>
-              {item.href === "/favorites" && (
-                <span className={css.count}>{store.length}</span>
-              )}
-            </Link>
+            {isReady && (
+              <Link
+                aria-label={item.title}
+                href={item.href}
+                key={`link-${item.id}`}
+                className={clsx(css.link, {
+                  [css.favs]: item.href === "/favorites",
+                })}
+              >
+                <span>{item.title}</span>
+                {item.href === "/favorites" && (
+                  <span className={css.count}>{store.length}</span>
+                )}
+              </Link>
+            )}
+            {!isReady && 
+            <span className={css.loading}></span>}
           </li>
         ))}
       </ul>

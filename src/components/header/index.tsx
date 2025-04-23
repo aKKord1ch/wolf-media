@@ -21,6 +21,8 @@ import Popup from "../shared/popup";
 export default function HeaderDefault() {
   const [curPage, setCurPage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [ready, setReady] = useState<boolean>(false)
+
   const dispatch = useDispatch<AppDispatch>();
   const path = usePathname();
 
@@ -33,6 +35,7 @@ export default function HeaderDefault() {
       lsList.forEach((item: ListItem) => {
         dispatch(addToFavorites(item));
       });
+      setReady(true)
     }
 
     if (document) {
@@ -40,8 +43,6 @@ export default function HeaderDefault() {
       document.body.style.overflow = isOpen ? "hidden" : "auto";
     }
   });
-
-
 
   const setPage = (pg: string) => {
     setCurPage(pg);
@@ -77,6 +78,7 @@ export default function HeaderDefault() {
               classNavItem={css.nav__item}
               curPage={curPage}
               setPage={setPage}
+              isReady={ready}
             />
           </Provider>
         </li>

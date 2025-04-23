@@ -1,33 +1,53 @@
 .count {
-   position: relative;
-   width: 15px;
-   height: 15px;
-   z-index: 100;
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
- 
-   color: var(--white);
-   font-size: inherit;
+  position: relative;
+  width: 15px;
+  height: 15px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
- }
- 
- .favs {
+  color: var(--white);
+  font-size: inherit;
+}
 
+.favs {
+  &::before {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
 
-   &::before {
-      content: "";
-      display: block;
-      width: 15px;
-      height: 15px;
-  
-      position: absolute;
-      top: 50%;
-      right: -7px;
-      z-index: 1;
-  
-      transform: translate(-50%, -50%);
-      background-color: var(--accent-color);
-      border-radius: 50%;
-    }
- }
+    position: absolute;
+    top: 50%;
+    right: -7px;
+    z-index: 1;
+
+    transform: translate(-50%, -50%);
+    background-color: var(--accent-color);
+    border-radius: 50%;
+  }
+}
+
+.loading {
+  width: 5vw;
+  height: 15px;
+
+  display: block;
+
+  border-radius: 10px;
+
+  animation: loading 1.5s ease infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-color: var(--color2);
+  }
+  50% {
+    background-color: var(--color3);
+  }
+  100% {
+    background-color: var(--color2);
+  }
+}
