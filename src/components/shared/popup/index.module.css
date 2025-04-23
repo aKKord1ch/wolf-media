@@ -17,7 +17,7 @@
 
   visibility: hidden;
   opacity: 0;
-  
+
   transition: visibility 0s linear 0.5s, opacity 0.5s ease;
 }
 
@@ -31,7 +31,7 @@
     opacity: 0;
     visibility: visible;
   }
-  
+
   to {
     opacity: 1;
     visibility: visible;
@@ -49,11 +49,13 @@
   border: none;
   display: block;
   z-index: 1001;
+
+  @media (width <= 425px) {
+    width: 95vw;
+  }
 }
 
 .cross {
-  content: '';
-
   display: block;
   width: 15px;
   height: 15px;
@@ -63,11 +65,11 @@
   right: 10px;
   z-index: 1002;
 
-  background-image: url('/crosshair.png');
+  background-image: url("/crosshair.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  
+
   &:hover {
     cursor: pointer;
   }
@@ -99,71 +101,86 @@
 
     color: var(--color2);
   }
-}
 
-.label {
-  background-color: var(--color4);
-  padding: 10px;
-  position: relative;
-  border: 1px solid var(--color3);
+  fieldset {
+    border: none;
+    position: relative;
+    width: 100%;
+    padding: 0;
+  }
+
+  input {
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+    padding: 20px 10px 10px;
+    font-size: 16px;
+    border: 1px var(--color3) solid;
+    background-color: var(--color4);
+    display: block;
+  }
 }
 
 .name,
-.tel {
+.tel,
+.mess {
   height: 50px;
 }
 
-.mess {
-  min-height: 117px;
+.label {
+  position: absolute;
+  top: 16px;
+  left: 2%;
+  z-index: 1000;
+  font-size: 16px;
+  color: var(--color2);
+  font-family: "Main Font Regular", sans-serif;
+  transition: all 0.2s ease;
+}
+
+.inputWrapper input:focus + .label .name_span,
+.inputWrapper input:not(:placeholder-shown) + .label .name_span {
+  top: -12px;
+  font-size: 12px;
+}
+
+.inputWrapper input:focus + .label .tel_span,
+.inputWrapper input:not(:placeholder-shown) + .label .tel_span {
+  top: -12px;
+  font-size: 12px;
+}
+
+.inputWrapper input:focus + .label .mess_span,
+.inputWrapper input:not(:placeholder-shown) + .label .mess_span {
+  top: -12px;
+  font-size: 12px;
+}
+
+.inputWrapper input:focus {
+  outline: none;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.inputWrapper input:focus + .label .name_span,
+.inputWrapper input:focus + .label .tel_span,
+.inputWrapper input:focus + .label .mess_span {
+  font-size: 12px;
+  top: -12px;
 }
 
 .label span {
   font-family: "Main Font Regular", sans-serif;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 100%;
-  color: var(--color2);
-  display: block;
-  position: absolute;
-  top: 5px;
-  left: 10px;
-
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.label input {
-  background-color: transparent;
-  outline: none;
-  border: none;
-  width: 100%;
-  height: 30px;
-  color: var(--white);
-}
-
-.label input::placeholder {
-  color: var(--color2);
-  opacity: 1;
-  font-family: "Main Font Regular", sans-serif;
-  font-weight: 400;
   font-size: 16px;
-  transition: opacity, transform, font-size, 0.3s ease;
+  line-height: 100%;
   position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.label input:focus::placeholder {
-  opacity: 0;
-  transform: translateY(-20px);
-  font-size: 9px;
-  left: 0;
-  color: var(--color2);
-}
-
-.label input:focus + span {
-  opacity: 1;
+  left: 2%;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  width: 200px;
 }
 
 .form button {
@@ -181,7 +198,6 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 100%;
-    letter-spacing: 0%;
     text-align: center;
     text-transform: uppercase;
 
@@ -189,4 +205,18 @@
   }
 
   border: none;
+}
+
+.error.error {
+  display: block;
+
+  color: var(--accent-color);
+  font-size: 10px;
+
+  margin-top: 2px;
+  margin-left: 5px;
+}
+
+.error_input.error_input {
+  border: 2px var(--accent-color) solid;
 }
