@@ -17,9 +17,10 @@ interface BurgerProps {
   page: string;
   setPage: Function;
   setOpen: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  isReady: boolean
 }
 
-export default function Burger({ page, setPage, setOpen }: BurgerProps) {
+export default function Burger({ page, setPage, setOpen, isReady }: BurgerProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -76,6 +77,7 @@ export default function Burger({ page, setPage, setOpen }: BurgerProps) {
             classNavigation={css.mob__navigation}
             curPage={page}
             setPage={setPage}
+            isReady={isReady}
           />
         </Provider>
 

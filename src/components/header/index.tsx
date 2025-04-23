@@ -56,7 +56,7 @@ export default function HeaderDefault() {
     <header className={css.header}>
       <ul className={css.list_items}>
         <li className={css.header__item + " " + css.hidden}>
-          <Burger page={curPage} setPage={setPage} setOpen={setOpen} />
+          <Burger page={curPage} setPage={setPage} setOpen={setOpen}  isReady={ready} />
         </li>
 
         <li className={css.header__item}>

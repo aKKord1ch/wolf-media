@@ -4,7 +4,6 @@ import Link from "next/link";
 import css from "./index.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../../store";
-import { useState } from "react";
 
 interface NavProps {
   classList: string;
