@@ -55,7 +55,6 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/heart.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/heart.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/heart.png" />
-        <link rel="preload" as="image" href="/Desktop.webp" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div className="wrapper">
@@ -65,11 +64,14 @@ export default function RootLayout({
               alt="Background image"
               width={1920}
               height={1212}
-              objectFit="cover"
-              objectPosition="center"
               priority
               sizes="(max-width: 600px) 210vw, (max-width: 900px) 150vw, 110vw"
-              style={{ width: "100%", height: "auto" }}
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
             />
           </div>
           <Providers>

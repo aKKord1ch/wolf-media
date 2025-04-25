@@ -1,167 +1,200 @@
 "use client";
 
-import clsx from "clsx";
-import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import css from "./index.module.css";
-import { useState } from "react";
+import {
+  clsx,
+  css,
+  React,
+  useState,
+  handleClickOutside,
+  schema,
+  DefaultInput,
+  ButtonSubmit,
+  FieldsetWrapper,
+  PhoneInput,
+  AsideList,
+  FormData,
+} from "./imports";
 
 interface PopupInterface {
   isOpen: boolean;
   setOpen: () => void;
 }
 
-const schema = z.object({
-  name: z.string().min(1, { message: "Это поле обязательно" }),
-  phone: z
-    .string()
-    .min(1, { message: "Это поле обязательно" })
-    .regex(/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/, {
-      message: "Неверный формат телефона",
-    }),
-  message: z.string().min(1, { message: "Это поле обязательно" }),
-});
-
-type FormData = z.infer<typeof schema>;
-
 export default function Popup({ isOpen, setOpen }: PopupInterface) {
-  const {
-    control,
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-    getValues,
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
-  });
-  const [phone, setPhone] = useState("");
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
+    {}
+  );
 
-  const handleClickOutside = (event: React.MouseEvent<HTMLDivElement>) => {
-    const dialog = document.getElementById("popup");
-    if (dialog && !dialog.contains(event.target as Node)) {
-      setOpen();
+  const [userData, setUserData] = useState<FormData>({
+    name: "",
+    phone: "",
+    message: "",
+  });
+
+  const [step, setStep] = useState(1);
+
+  let formData: FormData = {
+    name: "",
+    message: "",
+    phone: "",
+  };
+
+  const sendSubmit = (e: React.MouseEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setUserData((prev) => ({ ...prev, ...formData }));
+    const result = schema.safeParse(userData);
+
+    if (!result.success) {
+      setErrors({
+        name: result.error.flatten().fieldErrors?.name?.[0] ?? "",
+        phone: result.error.flatten().fieldErrors?.phone?.[0] ?? "",
+        message: result.error.flatten().fieldErrors?.message?.[0] ?? "",
+      });
+
+      return;
+    }
+
+    setOpen();
+    setUserData({
+      name: "",
+      message: "",
+      phone: "",
+    });
+    setStep(1);
+  };
+
+  const userDataCB = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    type: keyof FormData
+  ) => {
+    formData = { ...formData, [type]: e.target.value };
+    setUserData((prev) => ({
+      ...prev,
+      [type]: e.target.value,
+    }));
+  };
+
+  const errorsCB = (
+    isBlur: boolean,
+    type: keyof FormData,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setUserData((prev) => ({
+      ...prev,
+      [type]: e.target.value,
+    }));
+
+    if (isBlur) {
+      setErrors((prev) => ({
+        ...prev,
+        [type]: schema.safeParse(userData).error?.flatten().fieldErrors?.[
+          type
+        ]?.[0],
+      }));
+    } else {
+      setErrors((prev) => ({ ...prev, [type]: "" }));
     }
   };
 
-  const formatPhoneNumber = (value: string) => {
-    const digits = value.replace(/\D/g, "");
-
-    if (!digits) return "";
-
-    const normalized =
-      digits.startsWith("7") || digits.startsWith("8")
-        ? digits.slice(1)
-        : digits;
-
-    let formatted = "+7";
-
-    if (normalized.length > 0) formatted += ` (${normalized.slice(0, 3)}`;
-    if (normalized.length >= 4) formatted += `) ${normalized.slice(3, 6)}`;
-    if (normalized.length >= 7) formatted += `-${normalized.slice(6, 8)}`;
-    if (normalized.length >= 9) formatted += `-${normalized.slice(8, 10)}`;
-
-    return formatted;
-  };
-
-  const handlePhoneInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedPhone = formatPhoneNumber(event.target.value);
-    setPhone(formattedPhone);
-    setValue("phone", formattedPhone);
-  };
-
-  const onSubmit = (data: FormData) => {
-    console.log("Form Data:", data);
-    setOpen();
+  const stepCB = () => {
+    let resultForm = schema.safeParse(formData);
+    if (!resultForm.error?.flatten().fieldErrors.name) {
+      setStep(2);
+    }
+    if (!resultForm.error?.flatten().fieldErrors.phone) {
+      setStep(3);
+    }
   };
 
   return (
     <div
       className={clsx(css.wrapper, { [css.opened]: isOpen })}
-      onClick={(e) => handleClickOutside(e)}
+      onClick={(e) => handleClickOutside(setOpen, e)}
     >
       <dialog className={css.dialog} id="popup">
         <div className={css.cross} onClick={() => setOpen()}></div>
 
         <span className={css.title}>Написать нам</span>
 
-        <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          <fieldset className={css.input_container}>
-            <div className={clsx(css.inputWrapper, css.name)}>
-              <input
-                type="text"
-                id="name-input"
-                className={clsx(css.name, { [css.error_input]: errors.name })}
-                placeholder=" "
-                minLength={2}
-                maxLength={40}
-                {...register("name")}
-              />
-              <label htmlFor="name-input" className={clsx(css.label)}>
-                <span className={clsx(css.name_span)}>Ваше имя</span>
-              </label>
-              {errors.name && (
-                <span className={css.error}>{errors.name.message}</span>
-              )}
-            </div>
-          </fieldset>
+        <AsideList
+          classList={css.aside_list}
+          classActive={css.active_item}
+          classItem={css.aside_item}
+          step={step}
+        />
 
-          <fieldset className={css.input_container}>
-            <div className={clsx(css.inputWrapper, css.tel)}>
-              <Controller
-                name="phone"
-                control={control}
-                render={({ field }) => (
-                  <input
-                    type="tel"
-                    id="phone-input"
-                    className={clsx(css.tel, {
-                      [css.error_input]: errors.phone,
-                    })}
-                    placeholder=" "
-                    value={phone}
-                    onChange={(e) => {
-                      const formatted = formatPhoneNumber(e.target.value);
-                      setPhone(formatted);
-                      field.onChange(formatted);
-                    }}
-                  />
-                )}
-              />
+        <form className={css.form} onSubmit={sendSubmit}>
+          <FieldsetWrapper
+            classInputWrapper={css.inputWrapper}
+            classContainer={css.input_container}
+            classInputType={css.name}
+          >
+            <DefaultInput
+              type={"name"}
+              id={"name-input"}
+              className={css.name}
+              errorsCB={errorsCB}
+              stepCB={stepCB}
+              userDataCB={userDataCB}
+              textarea={false}
+              classDisabled={css.disabled_input}
+              step={step}
+              value={userData}
+              classError={css.error}
+              classLabel={css.label}
+              classSpan={css.name_span}
+              errors={errors}
+            />
+          </FieldsetWrapper>
 
-              <label htmlFor="phone-input" className={clsx(css.label)}>
-                <span className={clsx(css.tel_span)}>Ваш телефон</span>
-              </label>
-              {errors.phone && (
-                <span className={css.error}>Это поле обязательно</span>
-              )}
-            </div>
-          </fieldset>
+          <FieldsetWrapper
+            classContainer={css.input_container}
+            classInputType={css.tel}
+            classInputWrapper={css.inputWrapper}
+          >
+            <PhoneInput
+              id={"phone-input"}
+              className={css.tel}
+              errorsCB={errorsCB}
+              stepCB={stepCB}
+              userDataCB={userDataCB}
+              textarea={false}
+              classDisabled={css.disabled_input}
+              step={step}
+              type="phone"
+              value={userData}
+              classError={css.error}
+              classLabel={css.label}
+              classSpan={css.tel_span}
+              errors={errors}
+            />
+          </FieldsetWrapper>
 
-          <fieldset className={css.input_container}>
-            <div className={clsx(css.inputWrapper, css.mess)}>
-              <input
-                type="text"
-                id="mess-input"
-                className={clsx(css.mess, css.tel, {
-                  [css.error_input]: errors.message,
-                })}
-                placeholder=" "
-                {...register("message")}
-              />
-              <label htmlFor="mess-input" className={clsx(css.label)}>
-                <span className={clsx(css.mess_span)}>Ваше сообщение</span>
-              </label>
-              {errors.message && (
-                <span className={css.error}>{errors.message.message}</span>
-              )}
-            </div>
-          </fieldset>
+          <FieldsetWrapper
+            classContainer={css.input_container}
+            classInputType={css.mess}
+            classInputWrapper={css.inputWrapper}
+          >
+            <DefaultInput
+              id={"mess-input"}
+              className={css.mess}
+              classDisabled={css.disabled_input}
+              userDataCB={userDataCB}
+              errorsCB={errorsCB}
+              stepCB={stepCB}
+              textarea={true}
+              step={step}
+              value={userData}
+              type="message"
+              classError={css.error}
+              classLabel={css.label}
+              classSpan={css.mess_span}
+              errors={errors}
+            />
+          </FieldsetWrapper>
 
-          <button type="submit">
-            <span>Отправить</span>
-          </button>
+          <ButtonSubmit userData={userData} classDisabled={css.disabled} />
 
           <span>
             Нажимая кнопку “Отправить” вы даёте своё согласие на обработку

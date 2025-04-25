@@ -109,11 +109,13 @@
     padding: 0;
   }
 
-  input {
+  input,
+  textarea {
     position: relative;
     z-index: 1000;
     width: 100%;
     padding: 20px 10px 10px;
+    font-family: var(--main-font-regular);
     font-size: 16px;
     border: 1px var(--color3) solid;
     background-color: var(--color4);
@@ -121,10 +123,23 @@
   }
 }
 
+.disabled.disabled {
+  background-color: var(--color2);
+  color: var(--color3);
+
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
 .name,
-.tel,
-.mess {
+.tel {
   height: 50px;
+}
+
+.mess {
+  min-height: 117px;
+  resize: none;
 }
 
 .label {
@@ -150,13 +165,14 @@
   font-size: 12px;
 }
 
-.inputWrapper input:focus + .label .mess_span,
-.inputWrapper input:not(:placeholder-shown) + .label .mess_span {
+.inputWrapper textarea:focus + .label .mess_span,
+.inputWrapper textarea:not(:placeholder-shown) + .label .mess_span {
   top: -12px;
   font-size: 12px;
 }
 
-.inputWrapper input:focus {
+.inputWrapper input:focus,
+.inputWrapper textarea:focus {
   outline: none;
 }
 
@@ -166,7 +182,7 @@
 
 .inputWrapper input:focus + .label .name_span,
 .inputWrapper input:focus + .label .tel_span,
-.inputWrapper input:focus + .label .mess_span {
+.inputWrapper textarea:focus + .label .mess_span {
   font-size: 12px;
   top: -12px;
 }
@@ -192,6 +208,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   span {
     font-family: "Main Font Regular", sans-serif;
@@ -219,4 +239,74 @@
 
 .error_input.error_input {
   border: 2px var(--accent-color) solid;
+}
+
+.aside_list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+}
+
+.aside_item{
+  font-family: var(--main-font-regular);
+  font-size: 12px;
+
+  color: var(--white);
+
+  transition: color 0.3s ease;
+  position: relative;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background-color: var(--white);
+
+    border-radius: 2px;
+
+    transition: background-color 0.3s ease;
+  }
+}
+
+.active_item {
+  color: var(--accent-color);
+
+  &::after {
+    content: '';
+
+    background-color: var(--accent-color);
+
+  }
+}
+
+.disabled_input.disabled_input {
+  background-color: var(--color3);
+  color: var(--color2);
+}
+
+input:-webkit-autofill {
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-moz-autofill {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-text-fill-color: var(--white) !important;
+
+  font-size: 16px !important;
+  font-family: var(--main-font-regular) !important;
 }
