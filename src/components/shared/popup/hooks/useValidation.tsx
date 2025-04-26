@@ -1,15 +1,28 @@
 import { useState } from "react";
-import schema, { FormData } from "../assets/schema";
+import schema from "../assets/schema";
+import { FormData } from "../assets/schema";
+import { useForm } from "./useForm";
 
-export const useValidation = (userData?: FormData) => {
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+export const useValidation = () => {
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
+    {}
+  );
+  const { userData, updateField } = useForm();
 
-  const validateField = (type: keyof FormData, value: string, isBlur = false) => {
-    const result = schema.safeParse({ ...userData, [type]: value });
+  const validateField = (
+   isBlur: boolean,
+   type: keyof FormData,
+   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    updateField(type, e.target.value);
 
-    if (isBlur && !result.success) {
-      const errorMsg = result.error.flatten().fieldErrors?.[type]?.[0] ?? "";
-      setErrors((prev) => ({ ...prev, [type]: errorMsg }));
+    if (isBlur) {
+      setErrors((prev) => ({
+        ...prev,
+        [type]: schema.safeParse(userData).error?.flatten().fieldErrors?.[
+          type
+        ]?.[0],
+      }));
     } else {
       setErrors((prev) => ({ ...prev, [type]: "" }));
     }
@@ -17,13 +30,14 @@ export const useValidation = (userData?: FormData) => {
 
   const validateAll = () => {
     const result = schema.safeParse(userData);
+
     if (!result.success) {
-      const flattened = result.error.flatten().fieldErrors;
       setErrors({
-        name: flattened.name?.[0] ?? "",
-        phone: flattened.phone?.[0] ?? "",
-        message: flattened.message?.[0] ?? "",
+        name: result.error.flatten().fieldErrors?.name?.[0] ?? "",
+        phone: result.error.flatten().fieldErrors?.phone?.[0] ?? "",
+        message: result.error.flatten().fieldErrors?.message?.[0] ?? "",
       });
+
       return false;
     }
     return true;

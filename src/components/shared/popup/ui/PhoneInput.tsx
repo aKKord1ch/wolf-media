@@ -26,8 +26,6 @@ export default function PhoneInput({
           phoneRegionCode: "RU",
           prefix: "+7",
           noImmediatePrefix: true,
-          delimiters: [" (", ") ", "-", "-"],
-          blocks: [2, 3, 3, 2, 2],
           numericOnly: true,
         }}
         onChange={(e) => {
@@ -35,7 +33,6 @@ export default function PhoneInput({
           userDataCB(e, "phone");
           stepCB();
         }}
-        value={value.phone}
         className={clsx(className, { [classDisabled]: step < 2 })}
         disabled={step < 2}
         id={id}

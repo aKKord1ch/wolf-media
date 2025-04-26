@@ -15,21 +15,18 @@ import {
   FormData,
 } from "./imports";
 
+import { useValidation } from "./hooks/useValidation";
+import { useForm } from "./hooks/useForm";
+
 interface PopupInterface {
   isOpen: boolean;
   setOpen: () => void;
 }
 
 export default function Popup({ isOpen, setOpen }: PopupInterface) {
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
-    {}
-  );
+  const { errors, validateField, validateAll } = useValidation();
 
-  const [userData, setUserData] = useState<FormData>({
-    name: "",
-    phone: "",
-    message: "",
-  });
+  const { userData, setUserData, updateField } = useForm();
 
   const [step, setStep] = useState(1);
 
@@ -43,17 +40,8 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
     e.preventDefault();
 
     setUserData((prev) => ({ ...prev, ...formData }));
-    const result = schema.safeParse(userData);
 
-    if (!result.success) {
-      setErrors({
-        name: result.error.flatten().fieldErrors?.name?.[0] ?? "",
-        phone: result.error.flatten().fieldErrors?.phone?.[0] ?? "",
-        message: result.error.flatten().fieldErrors?.message?.[0] ?? "",
-      });
-
-      return;
-    }
+    if (!validateAll()) return;
 
     setOpen();
     setUserData({
@@ -62,6 +50,7 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
       phone: "",
     });
     setStep(1);
+    console.log(userData);
   };
 
   const userDataCB = (
@@ -73,28 +62,6 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
       ...prev,
       [type]: e.target.value,
     }));
-  };
-
-  const errorsCB = (
-    isBlur: boolean,
-    type: keyof FormData,
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setUserData((prev) => ({
-      ...prev,
-      [type]: e.target.value,
-    }));
-
-    if (isBlur) {
-      setErrors((prev) => ({
-        ...prev,
-        [type]: schema.safeParse(userData).error?.flatten().fieldErrors?.[
-          type
-        ]?.[0],
-      }));
-    } else {
-      setErrors((prev) => ({ ...prev, [type]: "" }));
-    }
   };
 
   const stepCB = () => {
@@ -134,7 +101,7 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
               type={"name"}
               id={"name-input"}
               className={css.name}
-              errorsCB={errorsCB}
+              errorsCB={validateField}
               stepCB={stepCB}
               userDataCB={userDataCB}
               textarea={false}
@@ -156,7 +123,7 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
             <PhoneInput
               id={"phone-input"}
               className={css.tel}
-              errorsCB={errorsCB}
+              errorsCB={validateField}
               stepCB={stepCB}
               userDataCB={userDataCB}
               textarea={false}
@@ -181,7 +148,7 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
               className={css.mess}
               classDisabled={css.disabled_input}
               userDataCB={userDataCB}
-              errorsCB={errorsCB}
+              errorsCB={validateField}
               stepCB={stepCB}
               textarea={true}
               step={step}
