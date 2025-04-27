@@ -294,19 +294,3 @@
   background-color: var(--color3);
   color: var(--color2);
 }
-
-input:-webkit-autofill {
-  transition: background-color 9999s ease-in-out 0s;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-moz-autofill {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -webkit-text-fill-color: var(--white) !important;
-
-  font-size: 16px !important;
-  font-family: var(--main-font-regular) !important;
-}
