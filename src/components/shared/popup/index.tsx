@@ -17,6 +17,7 @@ import {
 
 import { useValidation } from "./hooks/useValidation";
 import { useForm } from "./hooks/useForm";
+import sendToTelegrammAPI from "./api/sendToTelegrammAPI";
 
 interface PopupInterface {
   isOpen: boolean;
@@ -42,6 +43,12 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
     setUserData((prev) => ({ ...prev, ...formData }));
 
     if (!validateAll()) return;
+
+    try{
+      sendToTelegrammAPI(userData)
+    }catch (error) {
+      console.log('error:', error)
+    }
 
     setOpen();
     setUserData({
