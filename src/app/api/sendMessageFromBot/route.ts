@@ -1,6 +1,24 @@
+const ipExists = new Map<string, number>();
+
 export async function POST(req: Request) {
-  const forwarded = req.headers.get('x-forwarded-for')
-  const ip = forwarded ? forwarded : 'undefined'
+  const forwarded = req.headers.get("x-forwarded-for");
+
+  const ip = forwarded ? forwarded : "undefined";
+
+  const now = Date.now();
+
+  for (const [ip, date] of ipExists) {
+    if (now - date > 60000) ipExists.delete(ip);
+  }
+
+  if (ipExists.has(ip)) {
+    return new Response(
+      JSON.stringify({ success: false, message: "Too many requests" }),
+      { status: 429 }
+    );
+  }
+
+  ipExists.set(ip, now);
 
   const TOKEN_BOT = "7212690316:AAEQGyMZC9jtU6tBeDOTfaVQa-nhvLO3f8c";
 
