@@ -3,6 +3,7 @@ import "cleave.js/dist/addons/cleave-phone.ru";
 import clsx from "clsx";
 import React from "react";
 import { InputProps } from "../assets/interface";
+import { FormData } from "../imports";
 
 export default function PhoneInput({
   id,
@@ -16,8 +17,17 @@ export default function PhoneInput({
   userDataCB,
   value,
   step,
-  errors
+  errors,
 }: InputProps) {
+  const changeEventHandler = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    type: keyof FormData
+  ) => {
+    userDataCB(e, type);
+    errorsCB(false, type, e);
+    stepCB();
+  };
+
   return (
     <>
       <Cleave
@@ -28,11 +38,7 @@ export default function PhoneInput({
           noImmediatePrefix: true,
           numericOnly: true,
         }}
-        onChange={(e) => {
-          errorsCB(false, "phone", e);
-          userDataCB(e, "phone");
-          stepCB();
-        }}
+        onChange={(e) => changeEventHandler(e, "phone")}
         className={clsx(className, { [classDisabled]: step < 2 })}
         disabled={step < 2}
         id={id}

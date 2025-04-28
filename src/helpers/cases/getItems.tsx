@@ -1,6 +1,5 @@
 import { DataResponse } from "@/components/cases-list/interface/interface";
 import { baseURL } from "@/model/url";
-/* import { DeviceType, getDeviceType } from "../getDeviceType"; */
 
 const params = new Set(["slug", "title", "tagsDisplayed", "poster"]);
 
@@ -9,7 +8,6 @@ export async function getItems(
   offset: number = 0
 ): Promise<DataResponse> {
   
-  /*   const device: DeviceType = await getDeviceType(); */
 
   const res = await fetch(
     `${baseURL}/page/work?limit=${itemsCount}&offset=${offset}`,
@@ -28,17 +26,6 @@ export async function getItems(
     const filtred = Object.fromEntries(
       Object.entries(item).filter(([key]) => params.has(key))
     );
-
-    /* const imageObject = {
-      mobile: filtred.poster.image.mobile,
-      tablet: filtred.poster.image.tablet,
-      desktop: filtred.poster.image.src,
-    };
-
-    filtred.poster.image = {
-      ...imageObject,
-      current: imageObject[device],
-    }; */
 
     return filtred;
   });

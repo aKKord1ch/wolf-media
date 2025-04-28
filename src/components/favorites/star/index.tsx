@@ -21,22 +21,19 @@ export default function Star({ data }: StarProps) {
 
   const isFavorite = favs.some((item) => item.slug === data.slug);
 
-  const action = (data: ListItem) => {
+  const onClickHandler = (e: React.MouseEvent<HTMLElement>, data: ListItem) => {
+    e.preventDefault();
+
+    e.stopPropagation();
+
     isFavorite
       ? dispatch(removeFromFavorites(data))
       : dispatch(addToFavorites(data));
   };
 
   return (
-      <div
-        className={clsx(css.star)}
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          action(data);
-        }}
-      >
-        {isFavorite ? (
+    <div className={clsx(css.star)} onClick={(e) => onClickHandler(e, data)}>
+      {isFavorite ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -57,7 +54,8 @@ export default function Star({ data }: StarProps) {
           viewBox="0 0 24 24"
         >
           <path d="M12 .587l3.668 7.568L24 9.75l-6 5.85 1.416 8.4L12 19.897 4.584 24 6 15.6 0 9.75l8.332-1.595z" />
-        </svg>)}
-      </div>
+        </svg>
+      )}
+    </div>
   );
 }

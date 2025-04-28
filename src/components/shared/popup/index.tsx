@@ -48,7 +48,7 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
     if (!validateAll()) return;
 
     try {
-      sendToTelegrammAPI(userData)
+      sendToTelegrammAPI(userData);
 
       setIsSended(true);
 
@@ -57,33 +57,36 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
         setOpen();
       }, 3000);
     } catch (error) {
-      console.log("error:", error);
+      throw new Error(`${error}`)
     }
 
-    
     setUserData({
       name: "",
       message: "",
       phone: "",
     });
     setStep(1);
-    console.log(userData);
   };
 
   const userDataCB = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     type: keyof FormData
   ) => {
-    formData = { ...formData, [type]: e.target.value };
     setUserData((prev) => ({
       ...prev,
       [type]: e.target.value,
     }));
+    formData= {...userData, [type]: e.target.value}
   };
 
   const stepCB = () => {
     let resultForm = schema.safeParse(formData);
-    if (!resultForm.error?.flatten().fieldErrors.name) {
+    if (
+      !resultForm.error?.flatten().fieldErrors.name &&
+      !resultForm.error?.flatten().fieldErrors.phone
+    ) {
+      setStep(3);
+    } else {
       setStep(2);
     }
     if (!resultForm.error?.flatten().fieldErrors.phone) {
@@ -188,8 +191,6 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
 
         {isSended ? <TransactionLoader /> : ""}
       </dialog>
-
-      
     </div>
   );
 }

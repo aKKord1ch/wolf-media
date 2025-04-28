@@ -1,21 +1,22 @@
 import clsx from "clsx";
-import { FormData } from "../assets/schema";
+import schema, { FormData } from "../assets/schema";
 
 interface ButtonProps {
    userData: FormData
    classDisabled: string
-
 }
 
 export const ButtonSubmit = ({userData, classDisabled}: ButtonProps) => {
+  const validate = schema.safeParse(userData).success
+
+  const isDisabled = Object.values(userData).some((item) => item.trim() === "") || !validate;
+
   return (
     <button
       type="submit"
-      disabled={Object.values(userData).some((item) => item.trim() === "")}
+      disabled={isDisabled}
       className={clsx({
-        [classDisabled]: Object.values(userData).some(
-          (item) => item.trim() === ""
-        ),
+        [classDisabled]: (isDisabled),
       })}
     >
       <span>Отправить</span>

@@ -19,10 +19,6 @@ export default function Slider() {
     HOW_DO_WE_WORK__SLIDER
   );
 
-  /*   const [slidersArray, setSlidersArray] = useState<Slide[]>(() => {
-    return [...initialSlidersArray];
-  }); */
-
   const [curSlide, setCurSlide] = useState<Slide>(initialSlidersArray[0]);
 
   const updateSlide = () => {
@@ -43,31 +39,6 @@ export default function Slider() {
 
     return () => clearInterval(intervalId);
   }, [initialSlidersArray]);
-
-  /* const updateSlidersArray = () => {
-
-    setSlidersArray((prevSlides) => {
-      const newSlides = [...prevSlides];
-      const lastSlide = newSlides.shift();
-
-      if (lastSlide) {
-        newSlides.push(lastSlide);
-      }
-
-      return newSlides.map((item, index) => ({
-        ...item,
-        id: index,
-      }));
-    });
-
-    setCurSlide((prev) => {
-      const curIndex = slidersArray.findIndex((item) => item.id === prev.id);
-
-      console.log(slidersArray[curIndex], curSlide)
-
-      return curIndex !== -1 ? slidersArray[curIndex + 1] : slidersArray[0];
-    });
-  }; */
 
   return (
     <figure className={css.slider}>

@@ -2,13 +2,9 @@
 
 import { useState } from "react";
 import css from "./index.module.css";
-import header_css from "../../index.module.css";
 import { LinkItem } from "../../../shared/link-item";
 import { ButtonItem } from "../../../shared/button-item";
 import clsx from "clsx";
-import { HEADER_MENU } from "@/model/header";
-import { transliterate } from "transliteration";
-import Link from "next/link";
 import NavigationDefault from "../nav_default";
 import { Provider } from "react-redux";
 import store from "../../../../../store";

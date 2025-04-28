@@ -16,7 +16,6 @@ const listSlice = createSlice({
       ) {
         state.favs = [...state.favs, action.payload];
         setLocalStorageData("fav-cards", state.favs);
-        /* setCookie("count-fav-cards", state.favs.length); */
       }
     },
     removeFromFavorites: (state, action: PayloadAction<ListItem>) => {
@@ -24,7 +23,6 @@ const listSlice = createSlice({
         (item: Readonly<ListItem>) => item.slug !== action.payload.slug
       );
       setLocalStorageData("fav-cards", state.favs);
-      /* setCookie("count-fav-cards", state.favs.length); */
     },
   },
 });

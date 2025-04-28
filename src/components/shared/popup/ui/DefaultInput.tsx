@@ -18,6 +18,16 @@ export default function DefaultInput({
   textarea,
   step,
 }: InputProps) {
+  
+  const changeEventHandler = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    type: keyof FormData
+  ) => {
+    userDataCB(e, type);
+    errorsCB(false, type, e);
+    stepCB();
+  };
+
   return (
     <>
       {!textarea && (
@@ -29,9 +39,7 @@ export default function DefaultInput({
             className={clsx(className)}
             placeholder=" "
             onChange={(e) => {
-              userDataCB(e, "name");
-              errorsCB(false, "name", e);
-              stepCB();
+              changeEventHandler(e, "name");
             }}
             onBlur={(e) => errorsCB(true, "name", e)}
           />
@@ -49,9 +57,7 @@ export default function DefaultInput({
             className={clsx(className, { [classDisabled]: step < 3 })}
             placeholder=" "
             onChange={(e) => {
-              userDataCB(e, "message");
-              errorsCB(false, "message", e);
-              stepCB();
+              changeEventHandler(e, "message");
             }}
             onBlur={(e) => errorsCB(true, "message", e)}
             disabled={step < 3}
@@ -59,7 +65,9 @@ export default function DefaultInput({
           <label htmlFor="mess-input" className={clsx(classLabel)}>
             <span className={clsx(classSpan)}>Ваше сообщение</span>
           </label>
-          {errors.message && <span className={classError}>{errors.message}</span>}
+          {errors.message && (
+            <span className={classError}>{errors.message}</span>
+          )}
         </>
       )}
     </>
