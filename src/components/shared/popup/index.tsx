@@ -55,7 +55,7 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
       setTimeout(() => {
         setIsSended(false);
         setOpen();
-      }, 3000);
+      }, 2000);
     } catch (error) {
       throw new Error(`${error}`)
     }
