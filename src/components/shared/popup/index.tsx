@@ -48,7 +48,7 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
     if (!validateAll()) return;
 
     try {
-      /* sendToTelegrammAPI(userData) */
+      sendToTelegrammAPI(userData)
 
       setIsSended(true);
 
