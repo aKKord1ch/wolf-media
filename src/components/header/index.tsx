@@ -36,6 +36,8 @@ export default function HeaderDefault() {
         dispatch(addToFavorites(item));
       });
       setReady(true)
+    }else {
+      setReady(true)
     }
 
     if (document) {
