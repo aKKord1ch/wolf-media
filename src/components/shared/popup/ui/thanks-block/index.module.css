@@ -1,0 +1,32 @@
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10000;
+
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color5);
+}
+
+.checkmark_icon {
+  width: 20rem;
+  height: 20rem;
+  stroke: #38a169;
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: drawCheckmark 2s ease-out;
+}
+
+@keyframes drawCheckmark {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

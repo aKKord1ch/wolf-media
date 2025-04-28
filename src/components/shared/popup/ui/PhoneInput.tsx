@@ -38,6 +38,7 @@ export default function PhoneInput({
         id={id}
         placeholder=" "
         onBlur={(e) => errorsCB(true, "phone", e)}
+        value={value.phone}
       />
       <label htmlFor="phone-input" className={clsx(classLabel)}>
         <span className={clsx(classSpan)}>Ваш телефон</span>

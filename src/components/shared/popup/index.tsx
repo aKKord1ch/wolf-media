@@ -18,6 +18,7 @@ import {
 import { useValidation } from "./hooks/useValidation";
 import { useForm } from "./hooks/useForm";
 import sendToTelegrammAPI from "./api/sendToTelegrammAPI";
+import { TransactionLoader } from "./ui/thanks-block";
 
 interface PopupInterface {
   isOpen: boolean;
@@ -27,9 +28,11 @@ interface PopupInterface {
 export default function Popup({ isOpen, setOpen }: PopupInterface) {
   const { errors, validateField, validateAll } = useValidation();
 
-  const { userData, setUserData, updateField } = useForm();
+  const { userData, setUserData } = useForm();
 
   const [step, setStep] = useState(1);
+
+  const [isSended, setIsSended] = useState(false);
 
   let formData: FormData = {
     name: "",
@@ -44,13 +47,20 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
 
     if (!validateAll()) return;
 
-    try{
-      sendToTelegrammAPI(userData)
-    }catch (error) {
-      console.log('error:', error)
+    try {
+      /* sendToTelegrammAPI(userData) */
+
+      setIsSended(true);
+
+      setTimeout(() => {
+        setIsSended(false);
+        setOpen();
+      }, 3000);
+    } catch (error) {
+      console.log("error:", error);
     }
 
-    setOpen();
+    
     setUserData({
       name: "",
       message: "",
@@ -175,7 +185,11 @@ export default function Popup({ isOpen, setOpen }: PopupInterface) {
             персональных данных
           </span>
         </form>
+
+        {isSended ? <TransactionLoader /> : ""}
       </dialog>
+
+      
     </div>
   );
 }
