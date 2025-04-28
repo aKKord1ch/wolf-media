@@ -1,7 +1,7 @@
 "use client";
 
-import { Provider, useSelector } from "react-redux";
-import store, { RootState } from "../../../store";
+import { Provider } from "react-redux";
+import store from "../../../store";
 import clsx from "clsx";
 import css from "./index.module.css";
 import global from "@/app/globals.module.css";

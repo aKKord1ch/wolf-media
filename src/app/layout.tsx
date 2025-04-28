@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 import HeaderDefault from "@/components/header";
-import Popup from "@/components/shared/popup";
 import Image from "next/image";
 import css from "./globals.module.css";
 import { Providers } from "../../store/provider";
@@ -27,11 +26,11 @@ export const metadata: Metadata = {
     title: "Издательство новых медиа - Wolfmedia",
     description:
       "Wolfmedia - это редакция, где ежедневно создается уникальный контент для огромной аудитории.",
-    url: "https://wolfmedia.team",
+    url: "https://wolf-media-eta.vercel.app",
     type: "website",
     images: [
       {
-        url: "/header/WolfMEdia.svg",
+        url: "/heart.png",
       },
     ],
   },
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
     title: "Издательство новых медиа - Wolfmedia",
     description:
       "Wolfmedia - это редакция, где ежедневно создается уникальный контент для огромной аудитории.",
-    images: ["/header/WolfMEdia.svg"],
+    images: ["/heart.png"],
   },
 };
 

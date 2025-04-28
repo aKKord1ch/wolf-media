@@ -1,7 +1,6 @@
 "use client";
 
 import { Detail, getDetail } from "@/helpers/cases/getDetail";
-import decodeString from "@/helpers/decodeString";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -14,7 +13,6 @@ import clsx from "clsx";
 export default function Slug() {
   const [detail, setDetail] = useState<Detail | undefined>(undefined);
   const { slug } = useParams();
-  const a = useParams();
 
   useEffect(() => {
     document.body.style.overflow = "hidden";

@@ -1,5 +1,4 @@
 import Footer from "@/components/footer";
-import HeaderDefault from "@/components/header";
 import { Metadata } from "next";
 import css from "./index.module.css";
 
@@ -17,7 +16,6 @@ export default function RootLayout({
     <>
       {children}
       <Footer className={css.footer} />
-      {/* <Popup /> */}
     </>
   );
 }
