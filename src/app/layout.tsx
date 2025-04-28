@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/heart.png",
+        url: "https://wolf-media-eta.vercel.app/heart.png",
       },
     ],
   },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "Издательство новых медиа - Wolfmedia",
     description:
       "Wolfmedia - это редакция, где ежедневно создается уникальный контент для огромной аудитории.",
-    images: ["/heart.png"],
+    images: ["https://wolf-media-eta.vercel.app/heart.png"],
   },
 };
 
