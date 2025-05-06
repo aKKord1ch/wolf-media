@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import CasesList from "@/components/cases-list";
-import React from "react";
+import React, { Suspense } from "react";
 import css from "./index.module.css";
 import Footer from "@/components/footer";
 import { Provider } from "react-redux";
@@ -12,7 +12,9 @@ const Cases = () => {
     <div className="wrapper">
       <main className={css.main}>
         <Provider store={store}>
-          <CasesList />
+          <Suspense fallback={<div>Загрузка...</div>}>
+            <CasesList />
+          </Suspense>
         </Provider>
       </main>
       <Footer />
