@@ -13,12 +13,12 @@
   top: 0;
   left: 0;
 
-  z-index: 100000;
+  z-index: 100000; /* мб ненадо */
 
   visibility: hidden;
   opacity: 0;
 
-  transition: visibility 0s linear 0.5s, opacity 0.5s ease;
+  transition: visibility 0s linear 0.5s, opacity 0.5s ease; /* мб ненадо */
 }
 
 .wrapper.hidden {
@@ -80,7 +80,7 @@
   font-family: "Main Font Regular", sans-serif;
   font-weight: 700;
   font-size: 26px;
-  line-height: 100%;
+  line-height: 100%; /* мб ненадо */
   text-align: center;
   text-transform: uppercase;
   color: var(--white);
@@ -191,11 +191,11 @@
   font-family: "Main Font Regular", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 100%;
+  line-height: 100%; /* мб ненадо */
   position: absolute;
-  left: 2%;
+  left: 2%; /* мб ненадо */
   pointer-events: none;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease; /* мб ненадо */
   width: 200px;
 }
 
@@ -217,7 +217,7 @@
     font-family: "Main Font Regular", sans-serif;
     font-weight: 500;
     font-size: 16px;
-    line-height: 100%;
+    line-height: 100%; /* мб ненадо */
     text-align: center;
     text-transform: uppercase;
 
@@ -227,7 +227,7 @@
   border: none;
 }
 
-.error.error {
+.error.error { /* specifichnost */
   display: block;
 
   color: var(--accent-color);

@@ -9,6 +9,7 @@ const Pagination = ({ length, onSendData, isLoadedMore }: PaginationProps) => {
   const [curIndex, setCurIndex] = useState(1);
 
   const pagination: number[] = [];
+
   for (let i = 1; i <= Math.ceil(length / 10); i++) {
     pagination.push(i);
   }

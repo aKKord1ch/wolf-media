@@ -44,7 +44,7 @@ export default function DetailItem({
           <Image
             width={500}
             height={1000}
-            src={`${imageSrc}?q=100`}
+            src={imageSrc}
             alt={imageAlt}
             key={imageKey}
             onLoad={() => setImageLoaded(true)}

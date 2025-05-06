@@ -1,7 +1,7 @@
 export interface PaginationProps {
-  length: any,
-  onSendData: Function,
-  isLoadedMore: boolean
+  length: any;
+  onSendData: Function;
+  isLoadedMore: boolean;
 }
 
 export interface Item {
@@ -17,7 +17,15 @@ export interface Item {
   title: string;
 }
 
+export interface Categories {
+  slug: string;
+  title: string;
+}
+
 export interface DataResponse {
   length: number;
   items: Item[];
+  categories: Categories[]
 }
+
+

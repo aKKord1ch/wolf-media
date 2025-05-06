@@ -13,7 +13,8 @@ export default function FieldsetWrapper(
 ) {
   return (
     <fieldset className={classContainer}>
-      <div className={clsx(classInputWrapper, classInputType)}>{children}</div>
+      {/* mozhet nenado */}
+      <div className={clsx(classInputWrapper, classInputType)}>{children}</div> 
     </fieldset>
   );
 }

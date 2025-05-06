@@ -5,12 +5,13 @@ const params = new Set(["slug", "title", "tagsDisplayed", "poster"]);
 
 export async function getItems(
   itemsCount: number = 0,
-  offset: number = 0
+  offset: number = 0,
+  category: string = ""
 ): Promise<DataResponse> {
-  
+  if (category === "all") category = "";
 
   const res = await fetch(
-    `${baseURL}/page/work?limit=${itemsCount}&offset=${offset}`,
+    `${baseURL}/page/work?limit=${itemsCount}&offset=${offset}&category=${category}`,
     {
       next: { revalidate: 10 },
     }
@@ -30,7 +31,11 @@ export async function getItems(
     return filtred;
   });
 
-  let result = {length: data.total, items: filteredData}
+  let result = {
+    length: data.total,
+    items: filteredData,
+    categories: data.categories,
+  };
 
   return result;
 }
