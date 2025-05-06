@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import css from "./index.module.css";
 import global from "@/app/globals.module.css";
 import clsx from "clsx";
@@ -46,7 +46,7 @@ const CasesList: React.FC = () => {
 
     const data: DataResponse = await getItems(10, 0, slug);
 
-    console.log(data)
+    console.log(data);
 
     setStates(data.length, data.items, data.items.length, data.categories);
 
@@ -111,51 +111,53 @@ const CasesList: React.FC = () => {
   };
 
   return (
-    <section className={clsx(css.section, global.container)}>
-      <span className={css.main_title}>cases</span>
+    <Suspense fallback={<div>Загрузка...</div>}>
+      <section className={clsx(css.section, global.container)}>
+        <span className={css.main_title}>cases</span>
 
-      {categ && (
-        <CasesTabs
-          categories={categ}
-          curCategory={curCategory}
-          observeClick={handleClick}
-        />
-      )}
+        {categ && (
+          <CasesTabs
+            categories={categ}
+            curCategory={curCategory}
+            observeClick={handleClick}
+          />
+        )}
 
-      <ul className={css.list}>
-        {show.map((item: Item, index) => (
-          <li key={`li-${item.slug}-${index}`}>
-            <Link
-              aria-label={`карточка с названием ${item.title}`}
-              href={`/cases/${item.slug}`}
-              key={`${item.slug}-${index}`}
-            >
-              <DetailItem data={item} index={index} />
-            </Link>
-          </li>
-        ))}
-      </ul>
+        <ul className={css.list}>
+          {show.map((item: Item, index) => (
+            <li key={`li-${item.slug}-${index}`}>
+              <Link
+                aria-label={`карточка с названием ${item.title}`}
+                href={`/cases/${item.slug}`}
+                key={`${item.slug}-${index}`}
+              >
+                <DetailItem data={item} index={index} />
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-      <div className={css.pargination_load__container}>
-        <Pagination
-          onSendData={paginationCallback}
-          length={length}
-          isLoadedMore={isLoadedMore}
-        />
+        <div className={css.pargination_load__container}>
+          <Pagination
+            onSendData={paginationCallback}
+            length={length}
+            isLoadedMore={isLoadedMore}
+          />
 
-        <button
-          onClick={loadMore}
-          disabled={incrementalLength >= length}
-          className={clsx(
-            css.button,
-            { [css.abled]: !(incrementalLength >= length) },
-            { [css.disabled]: incrementalLength >= length }
-          )}
-        >
-          Загрузить еще
-        </button>
-      </div>
-    </section>
+          <button
+            onClick={loadMore}
+            disabled={incrementalLength >= length}
+            className={clsx(
+              css.button,
+              { [css.abled]: !(incrementalLength >= length) },
+              { [css.disabled]: incrementalLength >= length }
+            )}
+          >
+            Загрузить еще
+          </button>
+        </div>
+      </section>
+    </Suspense>
   );
 };
 
